@@ -1,0 +1,772 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="en">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="文化课," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="简介写一下我自己对于线性代数的理解。 参考书 Linear Algebra Done Right">
+<meta name="keywords" content="文化课">
+<meta property="og:type" content="article">
+<meta property="og:title" content="线性代数总结">
+<meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;12&#x2F;25&#x2F;linearalgebra&#x2F;index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="简介写一下我自己对于线性代数的理解。 参考书 Linear Algebra Done Right">
+<meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2020-01-31T07:00:22.463Z">
+<meta name="twitter:card" content="summary">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2019/12/25/linearalgebra/"/>
+
+
+
+
+
+  <title>线性代数总结 | Hexo</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Hexo</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            About
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/12/25/linearalgebra/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="John Doe">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">线性代数总结</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-12-25T16:18:23+08:00">
+                2019-12-25
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>写一下我自己对于线性代数的理解。</p>
+<p>参考书 <em>Linear Algebra Done Right</em></p>
+<a id="more"></a>
+<h2 id="向量空间"><a href="#向量空间" class="headerlink" title="向量空间"></a>向量空间</h2><p>这是最基本的内容，一个向量空间是对数乘和加法运算封闭的空间。事实上，所谓数乘就关系到数域 $\mathbb{F}$ ，一般来说我们只考虑 $\mathbb{R},\mathbb{C}$ 上的情况。</p>
+<h3 id="子空间的和"><a href="#子空间的和" class="headerlink" title="子空间的和"></a>子空间的和</h3><p>对于向量空间来说，我们关心的是将其分解成若干个子空间的和，所以我们定义了</p>
+<script type="math/tex; mode=display">U+V=\{w=u+v|u\in U, v\in V\}</script><p>但是有些情况下，我们可以得到更强的条件。这就是所谓的直和(direct sum)</p>
+<p>$W=U\oplus V$ 当且仅当 $W=U+V$ 且对于任意的 $w\in W$, 存在唯一的 $u\in U, v\in V$, 使得 $w=u+v$</p>
+<p>考虑到零在向量空间的特殊意义，我们容易得到 </p>
+<p>$W=U\oplus V\iff 0=u+v(u\in U, v\in V)\rightarrow u=0,v=0$</p>
+<h3 id="有限维度"><a href="#有限维度" class="headerlink" title="有限维度"></a>有限维度</h3><p>事实上，线性代数的内容基本限制在有限维度下。</p>
+<p>首先为了更好地描述一个向量空间，我们定义了张成(span)，线性无关/相关等概念，从而引出了基(base)的定义：</p>
+<p>我们称一组向量是某个线性空间 $V$ 的基，当且仅当它们张成 $V$ 且线性无关。</p>
+<p>然后利用向量空间的性质，我们得到了一个最重要的定理：</p>
+<p>一个向量空间的所有基有着相同的长度，这个长度被称为向量空间的维数。</p>
+<p>同时也可以轻易的推导出所谓的维数公式。</p>
+<h2 id="线性映射"><a href="#线性映射" class="headerlink" title="线性映射"></a>线性映射</h2><p>向量空间也被称作线性空间，它满足八条运算性质。线性映射被定义为线性空间到线性空间的映射，并且满足线性性。</p>
+<p>我们容易发现 $\mathcal{L}(U,V)$ 即，$U$ 到 $V$ 的线性变换组成的空间也是一个线性空间。</p>
+<h3 id="线性代数基本定理"><a href="#线性代数基本定理" class="headerlink" title="线性代数基本定理"></a>线性代数基本定理</h3><p>定义了线性映射的定义域与值域后，我们可以得到这个定理：</p>
+<p>$T\in\mathcal{L}(U,V)$</p>
+<p>$\dim range(T)+\dim null(T)=\dim U$</p>
+<p>事实上，这也是所谓矩阵列空间和零空间维数之和为$n$的意思。</p>
+<h3 id="逆映射"><a href="#逆映射" class="headerlink" title="逆映射"></a>逆映射</h3><p>随后我们得到众所周知的单射、满射、双射（即可逆）的条件。其实这也对应着矩阵存在单侧逆和逆矩阵的条件。</p>
+<h2 id="算子"><a href="#算子" class="headerlink" title="算子"></a>算子</h2><p>我们说一个线性变换是算子(operator)当且仅当其是自身到自身的线性变换，这与矩阵中的方阵是对应的。即 $T\in\mathcal{L}(V,V)$ ，则 $T$ 是算子。</p>
+<p>算子有着更加好的性质，这也是之后研究的重点。</p>
+<h3 id="不变子空间"><a href="#不变子空间" class="headerlink" title="不变子空间"></a>不变子空间</h3><p>我们希望将一个线性空间分解成若干个子空间，并且我们希望这些子空间有好的性质。记 $T\in\mathcal{L}(U)$，一个算子的不变子空间是指：</p>
+<p>若 $V$ 是 $U$ 的子空间，则 $v\in V\implies Tv\in V$</p>
+<p>事实上，一个算子的不变子空间给出了一个直和分解。</p>
+<h3 id="特征值与特征向量"><a href="#特征值与特征向量" class="headerlink" title="特征值与特征向量"></a>特征值与特征向量</h3><p>我们希望不变子空间的维数尽量小，即为1维的。根据线性空间的性质，可以算出它只可能是这种形式：</p>
+<script type="math/tex; mode=display">Tv=\lambda v, v\neq0,\lambda\in\mathbb{F}</script><p>那么我们自然就得到了所谓特征值与特征向量的定义。容易得到，不同特征值的特征向量线性无关。</p>
+<p>事实上，如果我们定义所谓的特征子空间 $E(T,\lambda_i)=\{v\ |\ Tv=\lambda_iv\}$ 则，不同特征子空间的和是一维子空间的直和。</p>
+<h2 id="内积空间"><a href="#内积空间" class="headerlink" title="内积空间"></a>内积空间</h2><p>我们更希望的是，将一个算子直和分解为一些一维子空间，但是这需要更强的条件，为此我们引入内积。内积的定义在此略过。</p>
+<h3 id="正交性"><a href="#正交性" class="headerlink" title="正交性"></a>正交性</h3><p>有了内积我们可以定义向量间正交，可以看出，正交是比线性无关更强的结论，我们有了所谓的Gram-Schmidt正交化过程。我们记内积为 $\langle u,v\rangle$</p>
+<h3 id="伴随"><a href="#伴随" class="headerlink" title="伴随"></a>伴随</h3><p>算子的伴随是一个非常重要的概念，它的定义实际上依赖于内积空间，但是很多线代书在开始就引入了（对应着矩阵的共轭转置）</p>
+<p>我们定义 $T$ 的伴随 $T^\star$ 为对于固定的 $u$ 和任意 $v$ 满足 $\langle Tu,v\rangle=\langle u,T^\star v\rangle$ 的映射，容易得知 $T^\star$ 也是算子，且唯一存在。</p>
+<p>并且，我们可以得到 $T$ 与 $T^\star$ 的定义域值域之间的正交补关系，这是线性代数基本定理的另一部分。在此略过。</p>
+<h4 id="谱定理"><a href="#谱定理" class="headerlink" title="谱定理"></a>谱定理</h4><p>我们称一个算子是自伴随的当且仅当它和它的伴随相等。这对应着实对称矩阵的概念。我们知道实对称矩阵可以正交相似对角化,类似的</p>
+<p><strong>Spectral Theorem:</strong></p>
+<p>$T\in\mathcal{L}(V)$ 则 $V$ 有一组以 $T$ 的特征向量构成的标准正交基</p>
+<p>这也说明了它是特征子空间的直和分解。</p>
+<h4 id="半正定算子"><a href="#半正定算子" class="headerlink" title="半正定算子"></a>半正定算子</h4><p>类似正定矩阵，我们引入了半正定算子，也是由内积定义的。</p>
+<p>$T\in\mathcal{L}(V)$ 是半正定算子当且仅当:</p>
+<p>它是自伴随的并且对于任何 $v\in V$ 有 $\langle Tv,v\rangle\geq 0$</p>
+<h3 id="一般算子的分解"><a href="#一般算子的分解" class="headerlink" title="一般算子的分解"></a>一般算子的分解</h3><p>对于并非自伴随的算子，我们也希望能够更好地描述它。</p>
+<h4 id="等距算子"><a href="#等距算子" class="headerlink" title="等距算子"></a>等距算子</h4><p>类似于正交矩阵或酉矩阵，我们定义</p>
+<p>$T\in\mathcal{L}(V)$ 是等距算子当且仅当:</p>
+<p>它对于任何 $u,v\in V$ 有 $\langle Tu,Tv\rangle= \langle u,v\rangle$</p>
+<h4 id="极分解"><a href="#极分解" class="headerlink" title="极分解"></a>极分解</h4><p>极分解指出，任何一个算子可以被分解为一个等距算子和半正定算子的复合。它实际上对应着复数的极分解。</p>
+<h4 id="奇异值分解"><a href="#奇异值分解" class="headerlink" title="奇异值分解"></a>奇异值分解</h4><p>事实上，奇异值分解可以由极分解导出，在此略过。</p>
+<h2 id="相似标准型"><a href="#相似标准型" class="headerlink" title="相似标准型"></a>相似标准型</h2>
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/%E6%96%87%E5%8C%96%E8%AF%BE/" rel="tag"># 文化课</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/12/24/calculus/" rel="next" title="微积分A(1)总结">
+                <i class="fa fa-chevron-left"></i> 微积分A(1)总结
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2020/02/05/csapplab1/" rel="prev" title="CS:APP Data Lab">
+                CS:APP Data Lab <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">John Doe</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives">
+              
+                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-name">tags</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#简介"><span class="nav-number">1.</span> <span class="nav-text">简介</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#向量空间"><span class="nav-number">2.</span> <span class="nav-text">向量空间</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#子空间的和"><span class="nav-number">2.1.</span> <span class="nav-text">子空间的和</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#有限维度"><span class="nav-number">2.2.</span> <span class="nav-text">有限维度</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#线性映射"><span class="nav-number">3.</span> <span class="nav-text">线性映射</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#线性代数基本定理"><span class="nav-number">3.1.</span> <span class="nav-text">线性代数基本定理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#逆映射"><span class="nav-number">3.2.</span> <span class="nav-text">逆映射</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#算子"><span class="nav-number">4.</span> <span class="nav-text">算子</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#不变子空间"><span class="nav-number">4.1.</span> <span class="nav-text">不变子空间</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#特征值与特征向量"><span class="nav-number">4.2.</span> <span class="nav-text">特征值与特征向量</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#内积空间"><span class="nav-number">5.</span> <span class="nav-text">内积空间</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#正交性"><span class="nav-number">5.1.</span> <span class="nav-text">正交性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#伴随"><span class="nav-number">5.2.</span> <span class="nav-text">伴随</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#谱定理"><span class="nav-number">5.2.1.</span> <span class="nav-text">谱定理</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#半正定算子"><span class="nav-number">5.2.2.</span> <span class="nav-text">半正定算子</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#一般算子的分解"><span class="nav-number">5.3.</span> <span class="nav-text">一般算子的分解</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#等距算子"><span class="nav-number">5.3.1.</span> <span class="nav-text">等距算子</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#极分解"><span class="nav-number">5.3.2.</span> <span class="nav-text">极分解</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#奇异值分解"><span class="nav-number">5.3.3.</span> <span class="nav-text">奇异值分解</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#相似标准型"><span class="nav-number">6.</span> <span class="nav-text">相似标准型</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">John Doe</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+
+  
+
+</body>
+</html>
