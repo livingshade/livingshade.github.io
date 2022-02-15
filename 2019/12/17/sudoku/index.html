@@ -1,0 +1,711 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="en">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="作业," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.2" />
+
+
+
+
+
+
+<meta name="description" content="简介完成了一个可以解数独：判断无解、多解（输出其中两个）、唯一解的程序。虽然与小组成员共同合作，但是代码主体还是自己写的。当然，这个大作业没什么实际意义，仅作记录。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="数独大作业">
+<meta property="og:url" content="http://yoursite.com/2019/12/17/sudoku/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="简介完成了一个可以解数独：判断无解、多解（输出其中两个）、唯一解的程序。虽然与小组成员共同合作，但是代码主体还是自己写的。当然，这个大作业没什么实际意义，仅作记录。">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2019-12-16T16:00:00.000Z">
+<meta property="article:modified_time" content="2022-01-24T04:52:38.150Z">
+<meta property="article:author" content="John Doe">
+<meta property="article:tag" content="作业">
+<meta name="twitter:card" content="summary">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2019/12/17/sudoku/"/>
+
+
+
+
+
+  <title>数独大作业 | Hexo</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<meta name="generator" content="Hexo 4.2.1"></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Hexo</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/12/17/sudoku/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="John Doe">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">数独大作业</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-12-17T00:00:00+08:00">
+                2019-12-17
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>完成了一个可以解数独：判断无解、多解（输出其中两个）、唯一解的程序。虽然与小组成员共同合作，但是代码主体还是自己写的。当然，这个大作业没什么实际意义，仅作记录。</p>
+<a id="more"></a>
+<h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><h4 id="算法设计思路"><a href="#算法设计思路" class="headerlink" title="算法设计思路"></a>算法设计思路</h4><p>求解数独：主要思想就是采用深度优先搜索算法以及回溯算法，暴力枚举所有情况并进行合法性检验，找到答案后进行处理和输出。</p>
+<p>生成数独：主要思想是在保证数独存在解的情况下，随机删除若干点，通过调用解题算法来判断解的唯一性。直到找到合法的删点情况。</p>
+<h4 id="代码设计思路"><a href="#代码设计思路" class="headerlink" title="代码设计思路"></a>代码设计思路</h4><p>整体代码分成两部分：</p>
+<p>解题和出题，在两个命名空间中实现。</p>
+<p>求解数独：</p>
+<p>​        数据结构：采用结构体数组存储每个格点的位置信息。采用数组分别维护当前的宫格情况、每行每列每宫数字的选入情况。</p>
+<p>​        代码：读入以及预处理。判断初始情况的可解性。深度优先搜索中需要时刻更新状态，并维护信息判断合法性。由于更新状态代码比较复杂，选择单独用一个函数实现。输出答案。</p>
+<p>生成数独：</p>
+<p>​        数据结构：采用一个数组来维护当前的宫格状态。</p>
+<p>​        代码：生成一个平凡的终局情况。对于终局情况进行随机的删点。调用解题程序判断唯一解存在性。代码有详细注释</p>
+<h3 id="具体过程"><a href="#具体过程" class="headerlink" title="具体过程"></a>具体过程</h3><h4 id="求解数独"><a href="#求解数独" class="headerlink" title="求解数独"></a>求解数独</h4><p>1.读入并进行预处理：</p>
+<p>​    首先，用已经填好数的格点更新其所在的行、列、宫，记录哪些数字已经被使用。之后，对于空白的格点，计算出它所有可能填入的数字。对于所有空白的格点，以其从它能够填入的数字总数从小到大排序，对于已填入数字相同的格点随机选择顺序。过程中进行合法性判断，如果某行、列、宫的数字重复出现了，则该数独不合法，一定无解。 </p>
+<p>2.搜索：</p>
+<p>按照预处理中排序的顺序搜索每个格点，枚举其所有可能填入的数字并且判断填入该数字后是否合法，如果合法的话则先填入该数字，并且更新所在行、列、宫的状态，更新后按照顺序枚举下一个格点。 </p>
+<p>3.回溯：</p>
+<p>如果所有格点都被填入数字，则证明找到了一个合法解，将这个解存入答案中。如果已经找到了2 个解，则说明这是多解情况，直接输出后退出程序。如果有一个格点没有数字可以填入（都不合法），则说明当前数独的填法是错误的。则回溯到上一个格点，更换其所填入的数字，重新进行搜索。</p>
+<h4 id="生成数独"><a href="#生成数独" class="headerlink" title="生成数独"></a>生成数独</h4><p>1.生成一个合法终局情况：</p>
+<p>直接按照初始情况全为0进行搜索，自然得到的第一个解是一个合法的终局情况。注意这个情况在每次调用时都是相同的，但是我们可以通过随机的交换某些行、列、宫（这并不影响数独的合法性）来达到随机生成的效果。</p>
+<p>2.随机进行删点:</p>
+<p>首先，对于每行随机一个值表示要删掉几个点，然后在1~9的排列中随机选出这些点删去，同时记录一共删除掉了多少点。删除结束后，随机的进行行、列的交换，那么之前按照行随机删点自然也等效于按照列随机删了。首先判断删除的总点数是否过多或过少，如果确实如此则重新进行删点。这里过多过少的阈值是经验常数。</p>
+<p>3.判断唯一性：</p>
+<p>将当前的情况作为输入数据，调用求解数独的程序进行判断是否存在唯一解，如果唯一解找到则直接输出程序结束，否则重复进行步骤2。注意到只要合理的调整步骤2中的经验常数，则可以在远小于时间限制内找到一个满足条件的唯一解的初始情况。</p>
+<h3 id="优化过程"><a href="#优化过程" class="headerlink" title="优化过程"></a>优化过程</h3><h4 id="求解数独-1"><a href="#求解数独-1" class="headerlink" title="求解数独"></a>求解数独</h4><p>1、贪心的思想：</p>
+<p>最开始我考虑如何优化的时候，自然是向人的思维方式靠拢：首先对于所有空白格点处理处它的所有可能候选，然后从候选最少格子开始填，填一个就更新，更新之后再选候选最少的。这样做显然要优于暴力枚举，但是由于“每次更新后在选择候选最少的”这个操作的实现效果不好（常数过大），所以我们最后选择了一种折衷的思想：显然一个数独的解正确与否是和搜索点的顺序无关的，因此，搜索的顺序不影响结果的正确性。我们按照每个空白格点的候选数字个数的多少进行排序，以贪心的思路，在搜索时按照这个顺序进行，这样做能充分发挥剪枝的效果。例如，考虑两个点，其中一个点已经有了唯一的可能，其上数字可以直接确认，而另一个格点的候选个数为9。那么，先对前者进行确认，要优于先确认后者，这一点在这两个数字紧密相关时更为明显，如果先对后者进行试填，那么这1次在DFS迭代次数将引起指数量级的运算。事实上，对于非极端情况，我们贪心的去选择候选个数少的有限去搜索，也会有不同程度的优化。这个优化主要是为了解决面对某些刻意构造的数据，如果按照字典序或者某种给定的顺序去搜索会导致迭代层数过多的问题。</p>
+<p>2.随机的思想：</p>
+<p>对于优化1，由于其贪心思想的内核，面对刻意构造的数据反而会变得更慢。所以我们有一种考量，就是在候选相同的格点内部随机，但是这也会带来新的问题。比如全是0的情况，由于按照顺序搜索会迅速填满第一行，所以会显著的减少迭代次数。而如果随机的话，由于81个格点都是空的，所以随机出来的顺序是乱序，从而导致不能迅速确定某一行、列、宫，反而会导致超时。考虑这样做会更慢的根本原因，因为实际上我们如果按照“人”的思想靠拢的话，会时刻更新所有点的候选，因此在第一个点随机选定后，人的思维模式下第二个点一定是在第一个点同行或同列或同宫的（因为这些点候选为8，其他为9），所以在这种极端情况下（全0），按顺序搜索反而与人的思维更相似。因此，我最后选择了综合这两种。也就是随机时优先按整个行来随机，而并非全局随机，这样就相对的达到了令人满意的结果。</p>
+<p>3.状态压缩：</p>
+<p>我们采用二进制状态压缩方式来保存每个行、列、宫中哪些数字被使用了。具体来说，用一个int变量，其二进制1~9位的0/1情况代表着这个行、列、宫中数字1~9的使用情况，1则代表使用，0则代表未使用。从而，使用位运算，可以避免每次从1到9 的枚举，从而更加快速地进行这组数据的应用与维护。</p>
+<p>4.常数：</p>
+<p>我们在预处理时，确定了初始情况下每个空格点所有候选可能，并存储在相应的数组中。而并不是在搜索时重新计算，从而，在每次搜索时我们不需要从1~9开始枚举，而只需要枚举那个数组中的元素。这是一个常数优化，优化的程度取决于初始情况的密集程度，对于每一个给定的初始格点都会减少总运算次数约26次（3*9-1）。生成数独1、使用计算机生成数独，自然难以像人工出题一样构造出空格点很多但仍然只有唯一解的好题，因此，我们选择构造两个经验常数，分别表示空格点的上界和下界，只有当随机出来的数独满足这个条件时才调用解题的部分进行判断。这样做的主要原因在于，随机一个数独的代价是很低的（因为我只需要随机出来删哪些点，不会超过81常数倍次操作）但是对于一个数独，去判断它的解的数量的代价是相对高的。因此，我选择构造这个经验常数，来避免极端情况的出现。其中，下界用来防止删除的格点太少导致题目强度较低，而上界是考虑到删的点过多后唯一解的出现情况是远小于多解的情况的。</p>
+<p><strong>code</strong></p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br><span class="line">197</span><br><span class="line">198</span><br><span class="line">199</span><br><span class="line">200</span><br><span class="line">201</span><br><span class="line">202</span><br><span class="line">203</span><br><span class="line">204</span><br><span class="line">205</span><br><span class="line">206</span><br><span class="line">207</span><br><span class="line">208</span><br><span class="line">209</span><br><span class="line">210</span><br><span class="line">211</span><br><span class="line">212</span><br><span class="line">213</span><br><span class="line">214</span><br><span class="line">215</span><br><span class="line">216</span><br><span class="line">217</span><br><span class="line">218</span><br><span class="line">219</span><br><span class="line">220</span><br><span class="line">221</span><br><span class="line">222</span><br><span class="line">223</span><br><span class="line">224</span><br><span class="line">225</span><br><span class="line">226</span><br><span class="line">227</span><br><span class="line">228</span><br><span class="line">229</span><br><span class="line">230</span><br><span class="line">231</span><br><span class="line">232</span><br><span class="line">233</span><br><span class="line">234</span><br><span class="line">235</span><br><span class="line">236</span><br><span class="line">237</span><br><span class="line">238</span><br><span class="line">239</span><br><span class="line">240</span><br><span class="line">241</span><br><span class="line">242</span><br><span class="line">243</span><br><span class="line">244</span><br><span class="line">245</span><br><span class="line">246</span><br><span class="line">247</span><br><span class="line">248</span><br><span class="line">249</span><br><span class="line">250</span><br><span class="line">251</span><br><span class="line">252</span><br><span class="line">253</span><br><span class="line">254</span><br><span class="line">255</span><br><span class="line">256</span><br><span class="line">257</span><br><span class="line">258</span><br><span class="line">259</span><br><span class="line">260</span><br><span class="line">261</span><br><span class="line">262</span><br><span class="line">263</span><br><span class="line">264</span><br><span class="line">265</span><br><span class="line">266</span><br><span class="line">267</span><br><span class="line">268</span><br><span class="line">269</span><br><span class="line">270</span><br><span class="line">271</span><br><span class="line">272</span><br><span class="line">273</span><br><span class="line">274</span><br><span class="line">275</span><br><span class="line">276</span><br><span class="line">277</span><br><span class="line">278</span><br><span class="line">279</span><br><span class="line">280</span><br><span class="line">281</span><br><span class="line">282</span><br><span class="line">283</span><br><span class="line">284</span><br><span class="line">285</span><br><span class="line">286</span><br><span class="line">287</span><br><span class="line">288</span><br><span class="line">289</span><br><span class="line">290</span><br><span class="line">291</span><br><span class="line">292</span><br><span class="line">293</span><br><span class="line">294</span><br><span class="line">295</span><br><span class="line">296</span><br><span class="line">297</span><br><span class="line">298</span><br><span class="line">299</span><br><span class="line">300</span><br><span class="line">301</span><br><span class="line">302</span><br><span class="line">303</span><br><span class="line">304</span><br><span class="line">305</span><br><span class="line">306</span><br><span class="line">307</span><br><span class="line">308</span><br><span class="line">309</span><br><span class="line">310</span><br><span class="line">311</span><br><span class="line">312</span><br><span class="line">313</span><br><span class="line">314</span><br><span class="line">315</span><br><span class="line">316</span><br><span class="line">317</span><br><span class="line">318</span><br><span class="line">319</span><br><span class="line">320</span><br><span class="line">321</span><br><span class="line">322</span><br><span class="line">323</span><br><span class="line">324</span><br><span class="line">325</span><br><span class="line">326</span><br><span class="line">327</span><br><span class="line">328</span><br><span class="line">329</span><br><span class="line">330</span><br><span class="line">331</span><br><span class="line">332</span><br><span class="line">333</span><br><span class="line">334</span><br><span class="line">335</span><br><span class="line">336</span><br><span class="line">337</span><br><span class="line">338</span><br><span class="line">339</span><br><span class="line">340</span><br><span class="line">341</span><br><span class="line">342</span><br><span class="line">343</span><br><span class="line">344</span><br><span class="line">345</span><br><span class="line">346</span><br><span class="line">347</span><br><span class="line">348</span><br><span class="line">349</span><br><span class="line">350</span><br><span class="line">351</span><br><span class="line">352</span><br><span class="line">353</span><br><span class="line">354</span><br><span class="line">355</span><br><span class="line">356</span><br><span class="line">357</span><br><span class="line">358</span><br><span class="line">359</span><br><span class="line">360</span><br><span class="line">361</span><br><span class="line">362</span><br><span class="line">363</span><br><span class="line">364</span><br><span class="line">365</span><br><span class="line">366</span><br><span class="line">367</span><br><span class="line">368</span><br><span class="line">369</span><br><span class="line">370</span><br><span class="line">371</span><br><span class="line">372</span><br><span class="line">373</span><br><span class="line">374</span><br><span class="line">375</span><br><span class="line">376</span><br><span class="line">377</span><br><span class="line">378</span><br><span class="line">379</span><br><span class="line">380</span><br><span class="line">381</span><br><span class="line">382</span><br><span class="line">383</span><br><span class="line">384</span><br><span class="line">385</span><br><span class="line">386</span><br><span class="line">387</span><br><span class="line">388</span><br><span class="line">389</span><br><span class="line">390</span><br><span class="line">391</span><br><span class="line">392</span><br><span class="line">393</span><br><span class="line">394</span><br><span class="line">395</span><br><span class="line">396</span><br><span class="line">397</span><br><span class="line">398</span><br><span class="line">399</span><br><span class="line">400</span><br><span class="line">401</span><br><span class="line">402</span><br><span class="line">403</span><br><span class="line">404</span><br><span class="line">405</span><br><span class="line">406</span><br><span class="line">407</span><br><span class="line">408</span><br><span class="line">409</span><br><span class="line">410</span><br><span class="line">411</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdlib&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;string&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;queue&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">random_int</span><span class="params">(<span class="keyword">int</span> limit)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">return</span> rand() % limit;</span><br><span class="line">&#125;                                  <span class="comment">//产生随机数 </span></span><br><span class="line"></span><br><span class="line"><span class="keyword">namespace</span> Solve                    <span class="comment">//解题 </span></span><br><span class="line">&#123;</span><br><span class="line">	<span class="class"><span class="keyword">struct</span> <span class="title">cell</span>                    //表示某一个格子 </span></span><br><span class="line"><span class="class">	&#123;</span></span><br><span class="line">		<span class="keyword">int</span> x;</span><br><span class="line">		<span class="keyword">int</span> y;</span><br><span class="line">		<span class="keyword">int</span> z;                     <span class="comment">//用x、y、z表示行、列、宫</span></span><br><span class="line">	&#125;;</span><br><span class="line">	<span class="keyword">int</span> chess_table[<span class="number">10</span>][<span class="number">10</span>], ifvaild[<span class="number">3</span>][<span class="number">10</span>], size[<span class="number">100</span>], random_value[<span class="number">100</span>];</span><br><span class="line">	<span class="comment">//chess_table表示每个格点</span></span><br><span class="line">	<span class="comment">//ifvalid表示填入一个数后每行、列、宫的可行性,其中0、1、2分别表示行、列、宫</span></span><br><span class="line">	<span class="comment">//size表示每个格点可能填入的数的个数</span></span><br><span class="line">	<span class="comment">//random_value表示随机数 </span></span><br><span class="line">	<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; possible_value[<span class="number">100</span>];  <span class="comment">//表示每一个格点的可能情况 </span></span><br><span class="line">	cell cell_map[<span class="number">100</span>];	              <span class="comment">//用来实时维护整个数独 </span></span><br><span class="line">	<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; candidate;            <span class="comment">//表示未填的格点 </span></span><br><span class="line">	<span class="built_in">vector</span>&lt;<span class="built_in">string</span>&gt; ans;               <span class="comment">//把可能解从左到右，再从上到下表示成字符串，储存在ans中 </span></span><br><span class="line">	<span class="keyword">bool</span> binary_chess_table[<span class="number">100</span>];     <span class="comment">//用bool表示格点是否填入数字，用index索引</span></span><br><span class="line">	<span class="function"><span class="keyword">bool</span> <span class="title">feasiblity_check</span><span class="params">()</span>           <span class="comment">//可行性检验，用位运算实现</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; <span class="number">10</span>; ++i)			<span class="comment">//按行枚举</span></span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">int</span> hash = <span class="number">0</span>;</span><br><span class="line">			<span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">1</span>; j &lt; <span class="number">10</span>; ++j)</span><br><span class="line">			&#123;</span><br><span class="line">				<span class="keyword">if</span> (!Solve::chess_table[i][j])</span><br><span class="line">					<span class="keyword">continue</span>;</span><br><span class="line">				<span class="keyword">if</span> ((hash &gt;&gt; Solve::chess_table[i][j]) &amp; <span class="number">1</span>)</span><br><span class="line">					<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">				hash |= (<span class="number">1</span> &lt;&lt; Solve::chess_table[i][j]);</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">1</span>; j &lt; <span class="number">10</span>; ++j)         <span class="comment">//按列枚举 </span></span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">int</span> hash = <span class="number">0</span>;</span><br><span class="line">			<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; <span class="number">10</span>; ++i)</span><br><span class="line">			&#123;</span><br><span class="line">				<span class="keyword">if</span> (!Solve::chess_table[i][j])</span><br><span class="line">					<span class="keyword">continue</span>;</span><br><span class="line">				<span class="keyword">if</span> ((hash &gt;&gt; Solve::chess_table[i][j]) &amp; <span class="number">1</span>)</span><br><span class="line">					<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">				hash |= (<span class="number">1</span> &lt;&lt; Solve::chess_table[i][j]);</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">2</span>; ++i)			<span class="comment">//按宫枚举</span></span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">for</span> (<span class="keyword">int</span> k = <span class="number">0</span>; k &lt; <span class="number">2</span>; ++k)</span><br><span class="line">			&#123;</span><br><span class="line">				<span class="keyword">int</span> hash = <span class="number">0</span>;</span><br><span class="line">				<span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">1</span>; j &lt; <span class="number">4</span>; ++j)</span><br><span class="line">				&#123;</span><br><span class="line">					<span class="keyword">int</span> x = i * <span class="number">3</span> + j;                                   </span><br><span class="line">					<span class="keyword">for</span> (<span class="keyword">int</span> l = <span class="number">1</span>; l &lt; <span class="number">4</span>; ++l)</span><br><span class="line">					&#123;</span><br><span class="line">						<span class="keyword">int</span> y = k * <span class="number">3</span> + l;                               </span><br><span class="line">						<span class="keyword">if</span> (!Solve::chess_table[x][y])                   </span><br><span class="line">							<span class="keyword">continue</span>;</span><br><span class="line">						<span class="keyword">if</span> (hash &gt;&gt; Solve::chess_table[x][y] &amp; <span class="number">1</span>)         </span><br><span class="line">							<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">						hash |= (<span class="number">1</span> &lt;&lt; Solve::chess_table[x][y]);         </span><br><span class="line">					&#125;</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;	</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">setzero</span><span class="params">()</span>    <span class="comment">//初始化，把所有相关值置空 </span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		<span class="built_in">memset</span>(chess_table, <span class="number">0</span>, <span class="keyword">sizeof</span> chess_table);</span><br><span class="line">		<span class="built_in">memset</span>(ifvaild, <span class="number">0</span>, <span class="keyword">sizeof</span> ifvaild);</span><br><span class="line">		<span class="built_in">memset</span>(size, <span class="number">0</span>, <span class="keyword">sizeof</span> size);</span><br><span class="line">		<span class="built_in">memset</span>(random_value, <span class="number">0</span>, <span class="keyword">sizeof</span> random_value);</span><br><span class="line">		<span class="built_in">memset</span>(cell_map, <span class="number">0</span>, <span class="keyword">sizeof</span> cell_map);</span><br><span class="line">		<span class="built_in">memset</span>(binary_chess_table, <span class="number">0</span>, <span class="keyword">sizeof</span> binary_chess_table);</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">100</span>; ++i)</span><br><span class="line">			possible_value[i].clear();</span><br><span class="line">		candidate.clear();</span><br><span class="line">		ans.clear();</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">insert_ans</span><span class="params">()</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		<span class="built_in">string</span> r;</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; <span class="number">10</span>; ++i)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">1</span>; j &lt; <span class="number">10</span>; ++j)</span><br><span class="line">				r.push_back(chess_table[i][j] + <span class="string">'0'</span>);   <span class="comment">//把这一个解r的每个格点加入到r的尾部 </span></span><br><span class="line">		&#125;</span><br><span class="line">		ans.push_back(r);          <span class="comment">//在解集ans中加入这个解r </span></span><br><span class="line">	&#125; </span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">print_ans</span><span class="params">()</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		<span class="keyword">if</span> (ans.size() == <span class="number">1</span>)      <span class="comment">//此时只有一个解 </span></span><br><span class="line">			<span class="built_in">cout</span> &lt;&lt; <span class="string">"OK"</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">		<span class="keyword">else</span> <span class="keyword">if</span> (ans.empty())     <span class="comment">//此时无解 </span></span><br><span class="line">			<span class="built_in">cout</span> &lt;&lt; <span class="string">"No_solution"</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">		<span class="keyword">else</span>                      <span class="comment">//此时多解 </span></span><br><span class="line">			<span class="built_in">cout</span> &lt;&lt; <span class="string">"Multiple_solutions"</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">auto</span> i : ans)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">int</span> t = <span class="number">0</span>;</span><br><span class="line">			<span class="keyword">for</span> (<span class="keyword">auto</span> j : i)</span><br><span class="line">			&#123;</span><br><span class="line">				<span class="built_in">cout</span> &lt;&lt; j &lt;&lt; <span class="string">" "</span>;</span><br><span class="line">				<span class="keyword">if</span> (++t % <span class="number">9</span> == <span class="number">0</span>)</span><br><span class="line">					<span class="built_in">cout</span> &lt;&lt; <span class="built_in">endl</span>; </span><br><span class="line">			&#125;                     <span class="comment">//每输出完一行的九个点就换行，这样输出一个解 </span></span><br><span class="line">			<span class="built_in">cout</span> &lt;&lt; <span class="built_in">endl</span>;         <span class="comment">//输出完一个解就换行 </span></span><br><span class="line">		&#125;                         <span class="comment">//这样就输出了每一个解 </span></span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">get_index</span><span class="params">(<span class="keyword">const</span> cell &amp;p)</span>                   <span class="comment">//获取某一个格点的编号 </span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="number">9</span> * (p.x - <span class="number">1</span>) + p.y;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">get_zone</span><span class="params">(<span class="keyword">int</span> x, <span class="keyword">int</span> y)</span>                     <span class="comment">//在格点用横纵坐标表示的前提下，获得格点所在宫的编号 </span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		<span class="keyword">return</span> (x - <span class="number">1</span>) / <span class="number">3</span> * <span class="number">3</span> + (y - <span class="number">1</span>) / <span class="number">3</span> + <span class="number">1</span>;  </span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">inline</span> <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; <span class="title">get_possible_value</span><span class="params">(<span class="keyword">const</span> cell &amp;p)</span>  <span class="comment">//本函数用来计算某个格点可能的取值，只在预处理时调用 </span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		<span class="keyword">static</span> <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; c;                             <span class="comment">//c用来存放每个可能值 </span></span><br><span class="line">		c.clear();</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; <span class="number">10</span>; ++i)                      <span class="comment">//首先遍历每个可能取值i</span></span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">if</span> (ifvaild[<span class="number">0</span>][p.x] &gt;&gt; i &amp; <span class="number">1</span>)                 <span class="comment">//用位运算，判断i这个值是否在这一行、这一列、这一宫已经用过 </span></span><br><span class="line">				<span class="keyword">continue</span>;</span><br><span class="line">			<span class="keyword">if</span> (ifvaild[<span class="number">1</span>][p.y] &gt;&gt; i &amp; <span class="number">1</span>)</span><br><span class="line">				<span class="keyword">continue</span>;</span><br><span class="line">			<span class="keyword">if</span> (ifvaild[<span class="number">2</span>][p.z] &gt;&gt; i &amp; <span class="number">1</span>)</span><br><span class="line">				<span class="keyword">continue</span>;</span><br><span class="line">			c.push_back(i);                               <span class="comment">//如果都没用过，则i是一个可能值，将它加入c中 </span></span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">return</span> c;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">inline</span> cell <span class="title">new_cell</span><span class="params">(<span class="keyword">int</span> index)</span>                       <span class="comment">//index表示格点的编号（从左到右从上到下1到81）,为该格点赋予行、列、宫的信息 </span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		<span class="keyword">int</span> x = (index - <span class="number">1</span>) / <span class="number">9</span> + <span class="number">1</span>, y = index % <span class="number">9</span>;</span><br><span class="line">		<span class="keyword">if</span> (y == <span class="number">0</span>)</span><br><span class="line">			y = <span class="number">9</span>;</span><br><span class="line">		<span class="keyword">int</span> z = get_zone(x, y);</span><br><span class="line">		<span class="keyword">return</span> (cell)&#123;x, y, z&#125;;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">update_chess_table</span><span class="params">(<span class="keyword">const</span> cell &amp;p, <span class="keyword">int</span> v, <span class="keyword">bool</span> flag)</span>   <span class="comment">//在某个格点填入了数之后，实时维护棋盘 </span></span></span><br><span class="line"><span class="function">	</span>&#123;			</span><br><span class="line">		binary_chess_table[get_index(p)] = flag;                          <span class="comment">//这个点填进了数 </span></span><br><span class="line">		chess_table[p.x][p.y] = v * flag;                                 <span class="comment">//记下这个点填的数为v </span></span><br><span class="line">		<span class="keyword">if</span> (flag)													<span class="comment">//加入点时</span></span><br><span class="line">		&#123;</span><br><span class="line">			ifvaild[<span class="number">0</span>][p.x] |= (<span class="number">1</span> &lt;&lt; v);</span><br><span class="line">			ifvaild[<span class="number">1</span>][p.y] |= (<span class="number">1</span> &lt;&lt; v);</span><br><span class="line">			ifvaild[<span class="number">2</span>][p.z] |= (<span class="number">1</span> &lt;&lt; v);</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">else</span>														<span class="comment">//回溯时</span></span><br><span class="line">		&#123;</span><br><span class="line">			ifvaild[<span class="number">0</span>][p.x] ^= (<span class="number">1</span> &lt;&lt; v);</span><br><span class="line">			ifvaild[<span class="number">1</span>][p.y] ^= (<span class="number">1</span> &lt;&lt; v);</span><br><span class="line">			ifvaild[<span class="number">2</span>][p.z] ^= (<span class="number">1</span> &lt;&lt; v);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">dfs</span><span class="params">(<span class="keyword">int</span> d)</span>                         <span class="comment">//深搜主体函数 </span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		<span class="keyword">if</span> (ans.size() &gt; <span class="number">1</span>)                 </span><br><span class="line">			<span class="keyword">return</span>;</span><br><span class="line">		<span class="keyword">if</span> (d == <span class="number">81</span>)                        <span class="comment">//如果搜索完毕得到一个解，记录它 </span></span><br><span class="line">			<span class="keyword">return</span> insert_ans();</span><br><span class="line">		<span class="keyword">auto</span> i = candidate[d];</span><br><span class="line">		<span class="keyword">const</span> <span class="keyword">auto</span> &amp;p = cell_map[i];</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">auto</span> v : possible_value[i])    <span class="comment">//遍历某个格点所有的可能值 </span></span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">if</span> (ifvaild[<span class="number">0</span>][p.x] &gt;&gt; v &amp; <span class="number">1</span> || ifvaild[<span class="number">1</span>][p.y] &gt;&gt; v &amp; <span class="number">1</span> || ifvaild[<span class="number">2</span>][p.z] &gt;&gt; v &amp; <span class="number">1</span>)<span class="comment">//如果这个值用过了，则剪掉 </span></span><br><span class="line">				<span class="keyword">continue</span>;</span><br><span class="line">			update_chess_table(p, v, <span class="number">1</span>);       <span class="comment">//令这个点为这个可能值，然后搜索下一个点 </span></span><br><span class="line">			dfs(d + <span class="number">1</span>);</span><br><span class="line">			update_chess_table(p, v, <span class="number">0</span>);	<span class="comment">//回溯 </span></span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">bool</span> <span class="title">compare</span><span class="params">(<span class="keyword">int</span> u, <span class="keyword">int</span> v)</span>                                <span class="comment">//比较两个格点u和v，用来确定一个填数的顺序 </span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		<span class="keyword">if</span> (binary_chess_table[u] &amp;&amp; !binary_chess_table[v])  <span class="comment">//填有数字的格点一定放在前面，这是因为DFS开始的深度d赋为total_num,方便代码实现，无实际意义</span></span><br><span class="line">			<span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">		<span class="keyword">if</span> (binary_chess_table[v] &amp;&amp; !binary_chess_table[u])  </span><br><span class="line">			<span class="keyword">return</span> <span class="number">0</span>;                                         </span><br><span class="line">		<span class="keyword">if</span> (size[u] == size[v])                               <span class="comment">//如果两个格点的可能值一样多，那么按照随机数给出</span></span><br><span class="line">			<span class="keyword">return</span> random_value[u] &lt; random_value[v];</span><br><span class="line">		<span class="keyword">else</span>                                                  <span class="comment">//如果不一样多，就先填可能值更少的那个 </span></span><br><span class="line">			<span class="keyword">return</span> size[u] &lt; size[v];</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">initialize</span><span class="params">(<span class="keyword">int</span> &amp;total_num)</span>                           <span class="comment">//预处理，给空的棋盘赋相关值，并且记录此时棋盘填入格点总数 </span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; <span class="number">82</span>; ++i)                          <span class="comment">//首先给每个格点赋予其行、列、宫的信息 </span></span><br><span class="line">			cell_map[i] = new_cell(i);</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; <span class="number">10</span>; ++i)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">1</span>; j &lt; <span class="number">10</span>; ++j)                      <span class="comment">//遍历每一个格点 </span></span><br><span class="line">			&#123;</span><br><span class="line">				<span class="keyword">int</span> u = chess_table[i][j];</span><br><span class="line">				<span class="keyword">if</span> (!u)                                       <span class="comment">//如果这个格点为0，即未赋值，则继续查找下一个点 </span></span><br><span class="line">					<span class="keyword">continue</span>;</span><br><span class="line">				++total_num;                               </span><br><span class="line">				<span class="keyword">int</span> index = i * <span class="number">9</span> + j - <span class="number">9</span>;</span><br><span class="line">				update_chess_table(cell_map[index], u, <span class="number">1</span>);       <span class="comment">//实时维护此时的棋盘</span></span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; <span class="number">82</span>; ++i)                          <span class="comment">//用size数组分别记录每个格点的可能性有几个 </span></span><br><span class="line">		&#123;</span><br><span class="line">			candidate.push_back(i);</span><br><span class="line">			size[i] = get_possible_value(cell_map[i]).size();                    </span><br><span class="line">			possible_value[i] = get_possible_value(cell_map[i]);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">read_from_file</span><span class="params">()</span>                      <span class="comment">//读入数据，把读到的'-'（即未填入的格点）表示成'0' </span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; <span class="number">10</span>; ++i)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">1</span>; j &lt; <span class="number">10</span>; ++j)</span><br><span class="line">			&#123;</span><br><span class="line">				<span class="keyword">char</span> ch;</span><br><span class="line">				<span class="built_in">cin</span> &gt;&gt; ch;</span><br><span class="line">				<span class="keyword">if</span> (ch == <span class="string">'-'</span>)</span><br><span class="line">					ch = <span class="string">'0'</span>;</span><br><span class="line">				chess_table[i][j] = ch - <span class="string">'0'</span>;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">random_value_init</span><span class="params">()</span>			<span class="comment">//为每个格点初始化一个随机数，保证随机数构成严格良序</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		<span class="keyword">static</span> <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; g = &#123;<span class="number">0</span>, <span class="number">1</span>, <span class="number">2</span>&#125;, f = &#123;<span class="number">0</span>, <span class="number">1</span>, <span class="number">2</span>&#125;, h = &#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>, <span class="number">7</span>, <span class="number">8</span>, <span class="number">9</span>&#125;;</span><br><span class="line">		random_shuffle(g.begin(), g.end());</span><br><span class="line">		<span class="keyword">int</span> cnt = <span class="number">0</span>;</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">auto</span> i : g)									<span class="comment">//随机选出大组：1~3,4~6,7~9</span></span><br><span class="line">		&#123;</span><br><span class="line">			random_shuffle(f.begin(), f.end());</span><br><span class="line">			<span class="keyword">for</span> (<span class="keyword">auto</span> j : f)								<span class="comment">//大组内三行顺序随机</span></span><br><span class="line">			&#123;</span><br><span class="line">				random_shuffle(h.begin(), h.end());</span><br><span class="line">				<span class="keyword">for</span> (<span class="keyword">int</span> k = <span class="number">0</span>; k &lt; h.size(); ++k)			<span class="comment">//行内顺序随机</span></span><br><span class="line">					random_value[(i * <span class="number">3</span> + j) * <span class="number">9</span> + h[k]] = ++cnt;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		</span><br><span class="line"></span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		setzero();</span><br><span class="line">		read_from_file();	                  <span class="comment">//对所有格点初始化为0，并且读入测试数据 </span></span><br><span class="line">		<span class="keyword">if</span> (!feasiblity_check())              <span class="comment">//如果不可行，输出无解 </span></span><br><span class="line">		&#123;</span><br><span class="line">			<span class="built_in">cout</span> &lt;&lt; <span class="string">"No_solution"</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">			<span class="keyword">return</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">int</span> total_num = <span class="number">0</span>;                    <span class="comment">//totalnum表示初始填入的数字个数</span></span><br><span class="line">		initialize(total_num);                <span class="comment">//预处理，给每个格点赋予信息 </span></span><br><span class="line">		random_value_init();  				  <span class="comment">//初始化随机模式</span></span><br><span class="line">		sort(candidate.begin(), candidate.end(), compare);    <span class="comment">//把未填的格点进行排序，为之后贪心地据可能性从少到多搜索做准备 </span></span><br><span class="line">		dfs(total_num);                       <span class="comment">//搜索可行解 </span></span><br><span class="line">		print_ans();                          <span class="comment">//输出解 </span></span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">bool</span> <span class="title">gen_main</span><span class="params">()</span>                           <span class="comment">//这是出题部分调用的接口 </span></span></span><br><span class="line"><span class="function">	</span>&#123;	</span><br><span class="line">		<span class="keyword">int</span> total_num = <span class="number">0</span>;</span><br><span class="line">		initialize(total_num);</span><br><span class="line">		random_value_init();</span><br><span class="line">		sort(candidate.begin(), candidate.end(), compare);</span><br><span class="line">		dfs(total_num);</span><br><span class="line">		<span class="keyword">return</span> ans.size() == <span class="number">1</span>;               <span class="comment">//当且仅当有唯一解时为true</span></span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line"><span class="keyword">namespace</span> Gen    									<span class="comment">//出题 			</span></span><br><span class="line">&#123;                                  							 </span><br><span class="line">    <span class="keyword">bool</span> FOUND_ANS;</span><br><span class="line">    <span class="keyword">int</span> a[<span class="number">10</span>][<span class="number">10</span>], b[<span class="number">10</span>][<span class="number">10</span>];                       <span class="comment">//b表示每个位置的实际值，而a表示可能值 </span></span><br><span class="line">    <span class="built_in">vector</span>&lt;pair&lt;<span class="keyword">int</span>, <span class="keyword">int</span>&gt; &gt; zone[<span class="number">3</span>][<span class="number">3</span>];             <span class="comment">//zone表示每个宫中填了格点的数量 </span></span><br><span class="line">    <span class="function"><span class="keyword">bool</span> <span class="title">check</span><span class="params">(<span class="keyword">int</span> u, <span class="keyword">int</span> v, <span class="keyword">int</span> x)</span>                 <span class="comment">//用来检查格点（u，v）是否可以为值x </span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; <span class="number">10</span>; ++i)                <span class="comment">//检查第u行是否已经有x，如果有则返回false </span></span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span> (a[u][i] == x)</span><br><span class="line">                <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; <span class="number">10</span>; ++i)                <span class="comment">//检查第v列是否已经有x，如果有则返回false </span></span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span> (a[i][v] == x)</span><br><span class="line">                <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">int</span> dx = (u - <span class="number">1</span>) / <span class="number">3</span>, dy = (v - <span class="number">1</span>) / <span class="number">3</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">auto</span> i : zone[dx][dy])                 <span class="comment">//检查格点所在的zone[dx][dy]宫是否已经有x，如果有则返回false </span></span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span> (a[i.first][i.second] == x)</span><br><span class="line">                <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">vector</span>&lt;pair&lt;<span class="keyword">int</span>, <span class="keyword">int</span>&gt; &gt; c;                      <span class="comment">//c用来对待填的格点进行操作 </span></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">expliot</span><span class="params">()</span>                                  <span class="comment">//把已有的完全填好的数独删去47-49个数。如果删多了或者删少了，则重新删 </span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        c.clear();</span><br><span class="line">        <span class="keyword">int</span> sum = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; <span class="number">10</span>; ++i)</span><br><span class="line">        &#123;</span><br><span class="line">        	<span class="keyword">int</span> SZ = random_int(<span class="number">8</span>) + <span class="number">1</span>;             <span class="comment">//每行都随机删除1到9个数</span></span><br><span class="line">            sum += SZ;</span><br><span class="line">            <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; t = &#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>, <span class="number">7</span>, <span class="number">8</span>, <span class="number">9</span>&#125;;</span><br><span class="line">            random_shuffle(t.begin(), t.end());</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; SZ; ++j)</span><br><span class="line">                c.push_back(make_pair(i, t[j]));</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; <span class="number">10</span>; ++i)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">1</span>; j &lt; <span class="number">10</span>; ++j)    </span><br><span class="line">                b[i][j] = a[i][j];</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">auto</span> i : c)</span><br><span class="line">            b[i.first][i.second] = <span class="number">0</span>;</span><br><span class="line">    	<span class="keyword">if</span> (sum &lt; <span class="number">46</span>)								<span class="comment">//下界</span></span><br><span class="line">    		<span class="keyword">return</span> expliot();</span><br><span class="line">    	<span class="keyword">if</span> (sum &gt; <span class="number">50</span>)								<span class="comment">//上界</span></span><br><span class="line">    		<span class="keyword">return</span> expliot();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">singular</span><span class="params">()</span>                                 <span class="comment">//由于数独是由完整的数独删去而成，故必定有解。这里用来保证生成只有唯一解的数独</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        expliot();                                  <span class="comment">//首先随机删去数独的一部分</span></span><br><span class="line">     	Solve::setzero();                           <span class="comment">//调用Solve名字空间的初始化函数</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; <span class="number">10</span>; ++i)                <span class="comment">//调用解题函数解题</span></span><br><span class="line">        &#123;</span><br><span class="line">        	<span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">1</span>; j &lt; <span class="number">10</span>; ++j)</span><br><span class="line">        		Solve::chess_table[i][j] = b[i][j];</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">bool</span> result = Solve::gen_main();			</span><br><span class="line">		<span class="keyword">if</span> (!result)                                <span class="comment">//如果并非有唯一解，则重新生成 </span></span><br><span class="line">			<span class="keyword">return</span> singular();</span><br><span class="line">		<span class="keyword">else</span>                                        <span class="comment">//如果有唯一解，则输出这个数独</span></span><br><span class="line">		&#123;</span><br><span class="line">        	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; <span class="number">10</span>; ++i)</span><br><span class="line">      	  	&#123;</span><br><span class="line">        		<span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">1</span>; j &lt; <span class="number">10</span>; ++j)</span><br><span class="line">        		&#123;</span><br><span class="line">       				<span class="keyword">if</span> (b[i][j] == <span class="number">0</span>)</span><br><span class="line">					    <span class="built_in">cout</span> &lt;&lt; <span class="string">"0 "</span>;</span><br><span class="line">					<span class="keyword">else</span>  </span><br><span class="line">	    				<span class="built_in">cout</span> &lt;&lt; b[i][j] &lt;&lt; <span class="string">" "</span>;</span><br><span class="line">        	    &#125;        		</span><br><span class="line">				<span class="built_in">cout</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">        	&#125;</span><br><span class="line">            FOUND_ANS = <span class="number">1</span>;</span><br><span class="line">		&#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">dfs</span><span class="params">(<span class="keyword">int</span> u, <span class="keyword">int</span> v)</span>                          <span class="comment">//递归地用深度优先搜索来遍历每一个点，寻找它的可能值 </span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (FOUND_ANS)								<span class="comment">//找到答案后返回</span></span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        <span class="keyword">if</span> (u == <span class="number">10</span>)                                <span class="comment">//如果此时已经搜索完毕，则开始之后的随机删点和验证是否唯一解的过程 </span></span><br><span class="line">            <span class="keyword">return</span> singular();</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; <span class="number">10</span>; ++i)                <span class="comment">//没搜索完毕时，对i=1~9，尝试（u，v）点能否为i </span></span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span> (check(u, v, i))</span><br><span class="line">            &#123;</span><br><span class="line">                a[u][v] = i;                        <span class="comment">//让（u，v）点为i，继续向下搜索。顺序是先从上到下搜索这一列，再搜右边的列 </span></span><br><span class="line">                <span class="keyword">if</span> (v == <span class="number">9</span>)</span><br><span class="line">                    dfs(u + <span class="number">1</span>, <span class="number">1</span>);</span><br><span class="line">                <span class="keyword">else</span></span><br><span class="line">                    dfs(u, v + <span class="number">1</span>);</span><br><span class="line">                a[u][v] = <span class="number">0</span>;                        <span class="comment">//回溯 </span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">init</span><span class="params">()</span>                                     <span class="comment">//初始化 </span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; <span class="number">10</span>; ++i)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">1</span>; j &lt; <span class="number">10</span>; ++j)</span><br><span class="line">                zone[(i - <span class="number">1</span>) / <span class="number">3</span>][(j - <span class="number">1</span>) / <span class="number">3</span>].push_back(make_pair(i, j));</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">static</span> <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; permutation = &#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>, <span class="number">7</span>, <span class="number">8</span>, <span class="number">9</span>&#125;;</span><br><span class="line">        random_shuffle(permutation.begin(), permutation.end());   </span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; <span class="number">10</span>; ++i)				<span class="comment">//随机第一行的数，这样保证生成题目是随机的</span></span><br><span class="line">            a[<span class="number">1</span>][i] = permutation[i - <span class="number">1</span>];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">main</span><span class="params">()</span>                                     <span class="comment">//主函数包括初始化和深搜，而判断单解和输出的函数包含在深搜中 </span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        init();</span><br><span class="line">        dfs(<span class="number">2</span>, <span class="number">1</span>);									<span class="comment">//从第二行开始DFS</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	srand(<span class="number">0</span>);       </span><br><span class="line">	<span class="keyword">int</span> type;</span><br><span class="line">	<span class="built_in">cin</span> &gt;&gt; type;</span><br><span class="line">	<span class="keyword">if</span> (type == <span class="number">1</span>)                                 </span><br><span class="line">		Gen::main();</span><br><span class="line">	<span class="keyword">else</span></span><br><span class="line">		Solve::main();</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/%E4%BD%9C%E4%B8%9A/" rel="tag"># 作业</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/12/11/gaosan/" rel="next" title="回忆一波高中生活（下）">
+                <i class="fa fa-chevron-left"></i> 回忆一波高中生活（下）
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/12/24/calculus/" rel="prev" title="微积分A(1)总结">
+                微积分A(1)总结 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="John Doe" />
+          <p class="site-author-name" itemprop="name">John Doe</p>
+           
+              <p class="site-description motion-element" itemprop="description"></p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives/">
+                <span class="site-state-item-count">8</span>
+                <span class="site-state-item-name">posts</span>
+              </a>
+            </div>
+          
+
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-name">tags</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#简介"><span class="nav-number">1.</span> <span class="nav-text">简介</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#思路"><span class="nav-number">1.1.</span> <span class="nav-text">思路</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#算法设计思路"><span class="nav-number">1.1.1.</span> <span class="nav-text">算法设计思路</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#代码设计思路"><span class="nav-number">1.1.2.</span> <span class="nav-text">代码设计思路</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#具体过程"><span class="nav-number">1.2.</span> <span class="nav-text">具体过程</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#求解数独"><span class="nav-number">1.2.1.</span> <span class="nav-text">求解数独</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#生成数独"><span class="nav-number">1.2.2.</span> <span class="nav-text">生成数独</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#优化过程"><span class="nav-number">1.3.</span> <span class="nav-text">优化过程</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#求解数独-1"><span class="nav-number">1.3.1.</span> <span class="nav-text">求解数独</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">John Doe</span>
+</div>
+
+
+<div class="powered-by">
+  Powered by <a class="theme-link" href="https://hexo.io" target="_blank" rel="noopener">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Theme -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next" target="_blank" rel="noopener">
+    NexT.Muse
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.2"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
