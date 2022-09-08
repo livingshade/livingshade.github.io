@@ -78,7 +78,7 @@
 <link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="日记," />
 
 
 
@@ -94,16 +94,17 @@
 
 
 
-<meta name="description" content="linux">
+<meta name="description" content="有东西被加密了, 请输入密码查看.">
 <meta property="og:type" content="article">
-<meta property="og:title" content="linuxcmd">
-<meta property="og:url" content="http://yoursite.com/2022/04/12/linuxcmd/index.html">
+<meta property="og:title" content="颤抖，梦">
+<meta property="og:url" content="http://yoursite.com/2022/09/08/realization/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="linux">
+<meta property="og:description" content="有东西被加密了, 请输入密码查看.">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2022-04-12T03:30:25.626Z">
-<meta property="article:modified_time" content="2022-09-02T06:30:13.946Z">
+<meta property="article:published_time" content="2022-09-07T16:00:00.000Z">
+<meta property="article:modified_time" content="2022-09-08T11:06:59.189Z">
 <meta property="article:author" content="John Doe">
+<meta property="article:tag" content="日记">
 <meta name="twitter:card" content="summary">
 
 
@@ -133,13 +134,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2022/04/12/linuxcmd/"/>
+  <link rel="canonical" href="http://yoursite.com/2022/09/08/realization/"/>
 
 
 
 
 
-  <title>linuxcmd | Hexo</title>
+  <title>颤抖，梦 | Hexo</title>
   
 
 
@@ -262,7 +263,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2022/04/12/linuxcmd/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2022/09/08/realization/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="John Doe">
@@ -279,7 +280,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">linuxcmd</h1>
+          <h1 class="post-title" itemprop="name headline">颤抖，梦</h1>
         
 
         <div class="post-meta">
@@ -291,8 +292,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2022-04-12T11:30:25+08:00">
-                2022-04-12
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2022-09-08T00:00:00+08:00">
+                2022-09-08
               </time>
             
 
@@ -329,16 +330,18 @@
       
 
       
-        <h1 id="linux"><a href="#linux" class="headerlink" title="linux"></a>linux</h1><a id="more"></a>
-<h3 id="update-alternatives"><a href="#update-alternatives" class="headerlink" title="update-alternatives"></a>update-alternatives</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">sudo update-alternatives --config g++</span><br><span class="line">update-alternatives --list g++</span><br><span class="line">update-alternatives --display g++</span><br><span class="line">sudo update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-9</span><br></pre></td></tr></table></figure>
-<h3 id="zsh-and-so-on"><a href="#zsh-and-so-on" class="headerlink" title="zsh and so on"></a>zsh and so on</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">sh -c "$(wget https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh -O -)"</span><br><span class="line"> </span><br><span class="line">git clone https://github.com/zsh-users/zsh-autosuggestions $&#123;ZSH_CUSTOM:-~/.oh-my-zsh/custom&#125;/plugins/zsh-autosuggestions</span><br><span class="line"></span><br><span class="line">git clone https://github.com/zsh-users/zsh-syntax-highlighting.git $&#123;ZSH_CUSTOM:-~/.oh-my-zsh/custom&#125;/plugins/zsh-syntax-highlighting</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"> plugins=(</span><br><span class="line">	git</span><br><span class="line">	zsh-autosuggestions</span><br><span class="line">	zsh-syntax-highlighting</span><br><span class="line">	autojump</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
-<h3 id="add-user"><a href="#add-user" class="headerlink" title="add user"></a>add user</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">adduser lbr</span><br><span class="line">passwd lbr</span><br><span class="line">usermod -aG sudo lbr</span><br></pre></td></tr></table></figure>
-<h3 id="add-group"><a href="#add-group" class="headerlink" title="add group"></a>add group</h3><h3 id="boost"><a href="#boost" class="headerlink" title="boost"></a>boost</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">apt-get install libboost-all-dev</span><br></pre></td></tr></table></figure>
-<h3 id="google-glogs-gflags-gtests…"><a href="#google-glogs-gflags-gtests…" class="headerlink" title="google: glogs, gflags, gtests…."></a>google: glogs, gflags, gtests….</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">apt install libgoogle-glog-dev</span><br><span class="line">sudo apt install google-perftools libgoogle-perftools-dev</span><br><span class="line">apt-get install -y google-perftools</span><br></pre></td></tr></table></figure>
-<h3 id="coredump-ctl"><a href="#coredump-ctl" class="headerlink" title="coredump ctl"></a>coredump ctl</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">apt install systemd-coredump</span><br><span class="line"></span><br><span class="line">ulimit -a | grep c</span><br><span class="line"></span><br><span class="line">ulimit -c unlimited</span><br><span class="line"></span><br><span class="line">coredumpctl -1</span><br><span class="line">coredumpctl gdb</span><br><span class="line">coredumpctl list | grep []</span><br></pre></td></tr></table></figure>
-<h3 id="PCI-config-amp-MSR"><a href="#PCI-config-amp-MSR" class="headerlink" title="PCI config &amp; MSR"></a>PCI config &amp; MSR</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">sudo su</span><br><span class="line">apt install msr-tools</span><br><span class="line">modprobe msr</span><br><span class="line">rdmsr 0x0</span><br><span class="line">wrmsr 0x1</span><br></pre></td></tr></table></figure>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">sudo su</span><br><span class="line">lspci | grep  []</span><br><span class="line">lspci -n | grep []</span><br><span class="line"></span><br><span class="line">setpci -vD -s 8086:xxxx 0x1.L</span><br><span class="line"><span class="meta">#</span><span class="bash"> or -d [bus]:[device].[<span class="keyword">function</span>]</span></span><br><span class="line">setpci -v ... 0x1.L=...</span><br></pre></td></tr></table></figure>
-
+        <div class="hbe hbe-container" id="hexo-blog-encrypt" data-wpm="wrong!" data-whm="抱歉, 这个文章不能被校验, 不过您还是能看看解密后的内容.">
+  <script id="hbeData" type="hbeData" data-hmacdigest="559056fd76b507b4a4036410382bc32e8160f60fdccee82bfc824537392ed950">8c36790732b28825c006cac5d54171adf3373973bff9f0a325e358308a319ede22e2b50139986a8fea4a251b239b8cd5eb272b2620065dbaef9167d2b565fb46c1f23d232d10023fbae1edc728735c987986d1ad2e8e10e0a6c46d5db49d8503353fbe9299f701e5423228e92c55edd3495dd04d5412961c17bbd5d92a94d5bcb806ca48a2b5d5c41eacbae55169b3c9685c5b18f3eec4b8571f24c6488f4c3802721a9f53b2f50cf5e0dee5cd56943bcd1e75d42d4f0b6059748f1139b1707880871d82b68d1f638d67998616a38bcaeae3a9801d0908c41bc8567f33feee5d80f27e824c4260544780b4b08defdeaf2ec634756f7a61e7dbb5d095dc9bce067fc56a40bc91e8302ab1535bc81279c9ffbf4c9e9e25edcc33b49fe5cd0fc63aa9bb4b2106d18192c16b5814cd4c5b2505ce1b788d482b230948425e45c8e237328bab9340a2268c65936b1b10ba13c0d8a013d36651e3cc5abc5e46c1d0f459570d3ad45140a5919a2d8832c4622a3a54e38b502b18b8540c1a67a53ec403f44404b0e0a1386e4388e73fc8ddaf7371ae8b439710bd013c8b4864d1dc214309225074135ba7dc2d9f5f45279b3b9c853c8681d0c323c12ba6c01e8c640bb69db3411b7d7bfbe57915fbff61c769a5913aa96dbbb540e7af230345ccdfbc34a839717b484616de43bc45b3d6eb2c327d1fd0bc5e8d632a1f01dcc8156bdedd29ef75238ce9975d6533f3f0c54a03e896078e678407d94453f309316f338be385f42629822f13b2b8c4b14b72357223b9787dc9a23291a2bcd2757aff7812460cba1308f71f5efd626184de08008034ed9f0cc4b640fc1074fe943577e4a8af1d6533a4537a1387011de47c7e3b2cc7d8156d30ba73cf4c44682928d858bbf4e2c427dde51c2d08f1cc6a55333e1b2bb7ad8a6c656bc2ff1c8c6e7b69fa8b5935cd3ca0b5b4f86504dd03ed3048a25e29c8df77c27d433c51a4ddb869649b91f61106db4c1541fae8f03788392db902ef22040d24a227ba445a7b8c696c9506c7ac4f4eb44ebb1e8deedd624651d13229348c0c059473482dfbdae35170a922c2524ffde6a75302c95622ae9fde25c902817271dc89fa27683275780e8dc98b1f9a474b80f9eb680a6ee705454150ae1b0f17e37fcc5ee900059fe0ebcaf0907d363f61ba63202fd1f11aefbda601ceeb496cc56b96f844254a407fb92da6a072a92f2d843498937cc51a0a6418cf84696ba48479e980aee34c2328d509c2730dea5f2ee7a13fa49c30f4a85e5e54767188c853f4ba2b0f1cffcf08e17f799645a448ec6b2eade365a037acfde8561ab9f4c63db948afd7036be2ecee5684272ffdc10fb09b0627379cbcad6b393e11ae1ece182253bc0173e7e0c1db3765378db43d9c26fc52bf2dd2cfb0b78f215cd653a6058a7355f24e709473422ce7243d95c7230f6603a07eee46f6b099a1c2643f4bfbad4ee2f4a5f95c1f782bbbb65695f67a8033c89e72a3ebf1209c3bc0816a9ec2f7ee1a7fd8be7944b66da3ac0754cda9ebaa6e9a6ad4007a1cce601b4afcf9de4335e01c6493f533d9bca36c5781d1f8961852ac37d9df49f42764ccbc2466a795a0cd4478985833e596856adf60cb5e3db2a659ce92a1f4aef612127273a9e18a644af88dc66d47e651ba3a864dd4f08a945be52ee97543106c918c18e8cadb33ee44141e58241f578f76845cf041419d6b2103e7ad5eacf258ff6708ae85301033e7d3bab7f4ae0ed88efc5f47ef7a0cd3ab4726e38c3af7c43293faf7bc643018b0fa98e29e82d12846256f4bdaf736078f674112f8378ec0ff8c2b8a60040c4c09a07e5e5a53952ab4e008eaacbc79f9e6255423448ccbb617537d335d61774d920dc71771e4a52423dae6d711796664542f952d5fecdc9acd9f4fa8c9cb2ce6ad14ff05fb17041a9d765a27254b32871461cb8b8d2b6a927050a2f214b18e3a82ae38e5c93a0a695dd9c88d46d7d3ea59c76e2a3fdf71a94e4c3278f1ec5caeb685f937ebcffebec0ec81021c2b1e7182181419a8aa89c60d8ec8808bb600cba39e87fbe6d2a5a534126c7932d9cb19f0706f16823860a94e06114cd9b3de39461d5cc959f71528eac1be9778f5817ebafa09ce273146d18b5ecee5f09ff2d01942aee30b2834820aeed2fe17721671ae2b741e58d1ee8b1f7fd48db48b1ebc69d954168e4095d7848998915b1576decdb2425ce91fa2296a38c378583a362599e43635776744ef61a8bf625e658804bb8a6fd22bd1440e2ded02c2b7a862def88322cddf9c551145547845eb81c478d2dc2db10da4b26fa03c367b21f8ae33c64841ea7053ff0701b02e678aa21632585acf0a6594fd8c684c5ab29fa0dc88b9dc74774a0ff3e053f49915a06a26564220baa6e7ec791a12d9d3af08049c53e263e2f666ae9fc42286a7356e360a4d331c311e15172e46c68daf6aee77171725dbf507cba79d305f557eed013cbecc7a0c8f2877dcafe78078521ef67eded7eeba5eaa83500d337f1b2f1e880d53c45cf06c6a8107d36fefe21f7b866822306c51f61e06e8557939a6921c7ff6f988eb2131bdb9e73fc01427202caf708944b2f505912c4b12a67723b6cc52ba332176fbac76658647f4eded696d37700c3078e7d474837044a2a3a6eaa7e2ff1a2491c6f3fb280301969b758a40c0ead17306aeae4800cf336332e75cba309fbb9b2cc6b143cded1167041adcfcf399c2e644bc35ad53fcc106e74d0b7960476202a57703c7975e91ccc75e3a81833c3e88b88b15e977facd28eb19bd1266b31689d911b217d1246a68c77c550117a5db699397f5dc3d682b959b62652c4e5c9c99ed72828f73f791b2e16a5c1d606aebfc6e811871d59bba819b23d6833215832ee66ab8c4ca3a06af8b05c7c360f9789bc2499de90e502d4f9f1f38049a88c009e6b8841befd64e8083e16e6658c835d296f9c859ee20c1447b79a504c27fa952013c83dbbdfe00fd2ce127e4018d45f987fc9a2b5e8272c01ee040a58dd4344a3326c10c23868c8f269d13091a6e00205044e6d5557365ba5ef77e9c78575d133502dcaec88b39ef1806210d5b65f2f97e111a2ae31641ab04f6f1a1b9b95513e2bda82b6e2c954e31657ca4cbacbbdce85e92545937ce0066925fb6ee2b394ad945c2d6da7c5741bf24e80e339695ac6c7a87ef011cd16511839c1f82fbc1fd6958d67febd622acac0d315d2023fd6bfbf201908785a6a31e73ef0990afe39a0a3ce985700826bf3ba91614ed5bcc5e26c6067d6989e4d40badaf910cd3ca7a912e03a6252c676d2044fda5557946be46b996ff714c9eb4d699e3df4bc70e156d2d7b6ef738dff810124d7dd279a548080c701a7be88a4dd2412021b8e0892ec375f9c9c57a4689e553c1f2bb3fa962ccc592dbcc28bbdc4e9fd0feb8492b4aa0d222e91bb030144057a3549575649d8a00127f6a4dbade510b6634db4fc739c56db0a529a15270e3edf69ec824c8b9c09bc3846f39964ac7a6bd7f1c5994af41dbbb39b1a4ea6bb38365c003223e3e953e1ffa766c2e2bc386cb398321368132c722c33e3f60906f493e9b7188e5e16a1a272f280089c2ac9e58eb10e3ffe1ffca99ad02ed328927d9d521cbc4773ff3338e85d7981bb7b0dc48e388fb7b7d4dcf21c357586a689b4527f9bdef99746f126004fb1e443f7b854db5dffd4704c327524c9f8f58304be6dac7b88ae8c676117744b6b439f354d7015c101eeb6cb5c8c190bc66a28850afcd2022098a2e77b9173e80b6dcb1d367de6185eb7b2d22d01bce5a7545224b7c6b045f390fea46ae44722e9a762df1b387bbd7f55a5f6362d9e9893d94493e2e148108a0a2482e6a2ab65eb1675f6a3e8f7e940d6ca7e1757c4ca1d2b2173f79b6c1deeb1f7b1ff71d7e17e7ddc23baea201d53f892561bf09d5aeaa0c1c4a292db3dddd34c1ccf26e452bed467aa5807d646759eb35c27f2cf177ed8a533e1c865698f2c2755ce0083305a36010cc2a0024db94c560840084007da496d875179fc292e426df80144a9d77174e65c02c00004a7670a4346962d7e7020cdedc05ac3af47f44da8998a8c2c7d5452decf4de75a33386e3cee9bd37319f76429821a20c283cd55055e054e2753a973ebc4a9cc3a66ec9ba814429625e2b7dcf6c1ee07df0f807d3b7b8cc101217392b32d4a19e3a8051772727b9febeefac9155eb5f52307bb0f9f2438234ae1cd080833b2f67ca3998222d85571e840314ba3608df8485ce987f1c276cbe63915cacc02d777d24d090a799440c093c83091a7862b71b7f2984f708f5052ca49f15687cfd74762ea39bf6bfd10f8de43378d4c7d023ab485f5fe064d86c81fc6312c813e56bc6010d73c2cd543a72a49fcf33255f1852169d389b75e4fb6425bfe11d87f0ae2258cbcdcd95da0004d69395e46b5cc33ac94b4b0abdd64c39366d27a8f9a1ff57de002f81ae8a83b139b0990c462286</script>
+  <div class="hbe hbe-content">
+    <div class="hbe hbe-input hbe-input-default">
+      <input class="hbe hbe-input-field hbe-input-field-default" type="password" id="hbePass">
+      <label class="hbe hbe-input-label hbe-input-label-default" for="hbePass">
+        <span class="hbe hbe-input-label-content hbe-input-label-content-default">有东西被加密了, 请输入密码查看.</span>
+      </label>
+    </div>
+  </div>
+</div>
+<script data-pjax src="/lib/hbe.js"></script><link href="/css/hbe.style.css" rel="stylesheet" type="text/css">
       
     </div>
     
@@ -353,6 +356,12 @@
 
     <footer class="post-footer">
       
+        <div class="post-tags">
+          
+            <a href="/tags/%E6%97%A5%E8%AE%B0/" rel="tag"># 日记</a>
+          
+        </div>
+      
 
       
       
@@ -362,8 +371,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2022/02/16/pmdk/" rel="next" title="pmdk环境配置">
-                <i class="fa fa-chevron-left"></i> pmdk环境配置
+              <a href="/2022/08/26/C++%20technique/" rel="next" title="C++ technique">
+                <i class="fa fa-chevron-left"></i> C++ technique
               </a>
             
           </div>
@@ -371,10 +380,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2022/04/20/diary/" rel="prev" title="批华日记第一部">
-                批华日记第一部 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -426,17 +431,8 @@
       
 
       
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
-            Table of Contents
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview">
-            Overview
-          </li>
-        </ul>
-      
 
-      <section class="site-overview sidebar-panel">
+      <section class="site-overview sidebar-panel sidebar-panel-active">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/images/avatar.gif"
@@ -489,22 +485,6 @@
 
       </section>
 
-      
-      <!--noindex-->
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-              
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#linux"><span class="nav-number">1.</span> <span class="nav-text">linux</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#update-alternatives"><span class="nav-number">1.0.1.</span> <span class="nav-text">update-alternatives</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#zsh-and-so-on"><span class="nav-number">1.0.2.</span> <span class="nav-text">zsh and so on</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#add-user"><span class="nav-number">1.0.3.</span> <span class="nav-text">add user</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#add-group"><span class="nav-number">1.0.4.</span> <span class="nav-text">add group</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#boost"><span class="nav-number">1.0.5.</span> <span class="nav-text">boost</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#google-glogs-gflags-gtests…"><span class="nav-number">1.0.6.</span> <span class="nav-text">google: glogs, gflags, gtests….</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#coredump-ctl"><span class="nav-number">1.0.7.</span> <span class="nav-text">coredump ctl</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#PCI-config-amp-MSR"><span class="nav-number">1.0.8.</span> <span class="nav-text">PCI config &amp; MSR</span></a></li></ol></li></ol></li></ol></div>
-            
-
-          </div>
-        </section>
-      <!--/noindex-->
       
 
       
