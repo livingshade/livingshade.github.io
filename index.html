@@ -1,965 +1,386 @@
-<!DOCTYPE html>
-<!-- saved from url=(0029)https://happierpig.github.io/ -->
+<!doctype html>
 <html lang="en">
-
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title> Banruo Liu </title>
-    <meta name="author" content="Banruo Liu">
-    <meta name="description"
-        content="A simple, whitespace theme for academics. Based on [*folio](https://github.com/bogoli/-folio) design. ">
-    <meta name="keywords" content="Computer Science, UC Berkeley">
-    <link rel="stylesheet" href="./files/bootstrap.min.css">
-    <link rel="stylesheet" href="./files/mdb.min.css" integrity="sha256-jpjYvU3G3N6nrrBwXJoVEYI/0zw8htfFnhT9ljN3JJw="
-        crossorigin="anonymous">
-    <link defer="" rel="stylesheet" href="./files/academicons.min.css">
-    <link defer="" rel="stylesheet" type="text/css" href="./files/css">
-    <link defer="" rel="stylesheet" href="./files/jekyll-pygments-themes-github.css" media=""
-        id="highlight_theme_light">
-    <link rel="stylesheet" href="./files/main.css">
-    <link rel="canonical" href="https://happierpig.github.io//">
-    <script src="./files/theme.js"></script>
-    <style type="text/css">
-        /* Chart.js */
-        @-webkit-keyframes chartjs-render-animation {
-            from {
-                opacity: 0.99
-            }
-
-            to {
-                opacity: 1
-            }
-        }
-
-        @keyframes chartjs-render-animation {
-            from {
-                opacity: 0.99
-            }
-
-            to {
-                opacity: 1
-            }
-        }
-
-        .chartjs-render-monitor {
-            -webkit-animation: chartjs-render-animation 0.001s;
-            animation: chartjs-render-animation 0.001s;
-        }
-    </style>
-    <style type="text/css">
-        .medium-zoom-overlay {
-            position: fixed;
-            top: 0;
-            right: 0;
-            bottom: 0;
-            left: 0;
-            opacity: 0;
-            transition: opacity .3s;
-            will-change: opacity
-        }
-
-        .medium-zoom--opened .medium-zoom-overlay {
-            cursor: pointer;
-            cursor: zoom-out;
-            opacity: 1
-        }
-
-        .medium-zoom-image {
-            cursor: pointer;
-            cursor: zoom-in;
-            transition: transform .3s cubic-bezier(.2, 0, .2, 1) !important
-        }
-
-        .medium-zoom-image--hidden {
-            visibility: hidden
-        }
-
-        .medium-zoom-image--opened {
-            position: relative;
-            cursor: pointer;
-            cursor: zoom-out;
-            will-change: transform
-        }
-    </style>
-    <style type="text/css">
-        .CtxtMenu_InfoClose {
-            top: .2em;
-            right: .2em;
-        }
-
-        .CtxtMenu_InfoContent {
-            overflow: auto;
-            text-align: left;
-            font-size: 80%;
-            padding: .4em .6em;
-            border: 1px inset;
-            margin: 1em 0px;
-            max-height: 20em;
-            max-width: 30em;
-            background-color: #EEEEEE;
-            white-space: normal;
-        }
-
-        .CtxtMenu_Info.CtxtMenu_MousePost {
-            outline: none;
-        }
-
-        .CtxtMenu_Info {
-            position: fixed;
-            left: 50%;
-            width: auto;
-            text-align: center;
-            border: 3px outset;
-            padding: 1em 2em;
-            background-color: #DDDDDD;
-            color: black;
-            cursor: default;
-            font-family: message-box;
-            font-size: 120%;
-            font-style: normal;
-            text-indent: 0;
-            text-transform: none;
-            line-height: normal;
-            letter-spacing: normal;
-            word-spacing: normal;
-            word-wrap: normal;
-            white-space: nowrap;
-            float: none;
-            z-index: 201;
-            border-radius: 15px;
-            /* Opera 10.5 and IE9 */
-            -webkit-border-radius: 15px;
-            /* Safari and Chrome */
-            -moz-border-radius: 15px;
-            /* Firefox */
-            -khtml-border-radius: 15px;
-            /* Konqueror */
-            box-shadow: 0px 10px 20px #808080;
-            /* Opera 10.5 and IE9 */
-            -webkit-box-shadow: 0px 10px 20px #808080;
-            /* Safari 3 & Chrome */
-            -moz-box-shadow: 0px 10px 20px #808080;
-            /* Forefox 3.5 */
-            -khtml-box-shadow: 0px 10px 20px #808080;
-            /* Konqueror */
-            filter: progid:DXImageTransform.Microsoft.dropshadow(OffX=2, OffY=2, Color="gray", Positive="true");
-            /* IE */
-        }
-    </style>
-    <style type="text/css">
-        .CtxtMenu_MenuClose {
-            position: absolute;
-            cursor: pointer;
-            display: inline-block;
-            border: 2px solid #AAA;
-            border-radius: 18px;
-            -webkit-border-radius: 18px;
-            /* Safari and Chrome */
-            -moz-border-radius: 18px;
-            /* Firefox */
-            -khtml-border-radius: 18px;
-            /* Konqueror */
-            font-family: "Courier New", Courier;
-            font-size: 24px;
-            color: #F0F0F0
-        }
-
-        .CtxtMenu_MenuClose span {
-            display: block;
-            background-color: #AAA;
-            border: 1.5px solid;
-            border-radius: 18px;
-            -webkit-border-radius: 18px;
-            /* Safari and Chrome */
-            -moz-border-radius: 18px;
-            /* Firefox */
-            -khtml-border-radius: 18px;
-            /* Konqueror */
-            line-height: 0;
-            padding: 8px 0 6px
-                /* may need to be browser-specific */
-        }
-
-        .CtxtMenu_MenuClose:hover {
-            color: white !important;
-            border: 2px solid #CCC !important
-        }
-
-        .CtxtMenu_MenuClose:hover span {
-            background-color: #CCC !important
-        }
-
-        .CtxtMenu_MenuClose:hover:focus {
-            outline: none
-        }
-    </style>
-    <style type="text/css">
-        .CtxtMenu_Menu {
-            position: absolute;
-            background-color: white;
-            color: black;
-            width: auto;
-            padding: 5px 0px;
-            border: 1px solid #CCCCCC;
-            margin: 0;
-            cursor: default;
-            font: menu;
-            text-align: left;
-            text-indent: 0;
-            text-transform: none;
-            line-height: normal;
-            letter-spacing: normal;
-            word-spacing: normal;
-            word-wrap: normal;
-            white-space: nowrap;
-            float: none;
-            z-index: 201;
-            border-radius: 5px;
-            /* Opera 10.5 and IE9 */
-            -webkit-border-radius: 5px;
-            /* Safari and Chrome */
-            -moz-border-radius: 5px;
-            /* Firefox */
-            -khtml-border-radius: 5px;
-            /* Konqueror */
-            box-shadow: 0px 10px 20px #808080;
-            /* Opera 10.5 and IE9 */
-            -webkit-box-shadow: 0px 10px 20px #808080;
-            /* Safari 3 & Chrome */
-            -moz-box-shadow: 0px 10px 20px #808080;
-            /* Forefox 3.5 */
-            -khtml-box-shadow: 0px 10px 20px #808080;
-            /* Konqueror */
-        }
-
-        .CtxtMenu_MenuItem {
-            padding: 1px 2em;
-            background: transparent;
-        }
-
-        .CtxtMenu_MenuArrow {
-            position: absolute;
-            right: .5em;
-            padding-top: .25em;
-            color: #666666;
-            font-family: null;
-            font-size: .75em
-        }
-
-        .CtxtMenu_MenuActive .CtxtMenu_MenuArrow {
-            color: white
-        }
-
-        .CtxtMenu_MenuArrow.CtxtMenu_RTL {
-            left: .5em;
-            right: auto
-        }
-
-        .CtxtMenu_MenuCheck {
-            position: absolute;
-            left: .7em;
-            font-family: null
-        }
-
-        .CtxtMenu_MenuCheck.CtxtMenu_RTL {
-            right: .7em;
-            left: auto
-        }
-
-        .CtxtMenu_MenuRadioCheck {
-            position: absolute;
-            left: .7em;
-        }
-
-        .CtxtMenu_MenuRadioCheck.CtxtMenu_RTL {
-            right: .7em;
-            left: auto
-        }
-
-        .CtxtMenu_MenuInputBox {
-            padding-left: 1em;
-            right: .5em;
-            color: #666666;
-            font-family: null;
-        }
-
-        .CtxtMenu_MenuInputBox.CtxtMenu_RTL {
-            left: .1em;
-        }
-
-        .CtxtMenu_MenuComboBox {
-            left: .1em;
-            padding-bottom: .5em;
-        }
-
-        .CtxtMenu_MenuSlider {
-            left: .1em;
-        }
-
-        .CtxtMenu_SliderValue {
-            position: absolute;
-            right: .1em;
-            padding-top: .25em;
-            color: #333333;
-            font-size: .75em
-        }
-
-        .CtxtMenu_SliderBar {
-            outline: none;
-            background: #d3d3d3
-        }
-
-        .CtxtMenu_MenuLabel {
-            padding: 1px 2em 3px 1.33em;
-            font-style: italic
-        }
-
-        .CtxtMenu_MenuRule {
-            border-top: 1px solid #DDDDDD;
-            margin: 4px 3px;
-        }
-
-        .CtxtMenu_MenuDisabled {
-            color: GrayText
-        }
-
-        .CtxtMenu_MenuActive {
-            background-color: #606872;
-            color: white;
-        }
-
-        .CtxtMenu_MenuDisabled:focus {
-            background-color: #E8E8E8
-        }
-
-        .CtxtMenu_MenuLabel:focus {
-            background-color: #E8E8E8
-        }
-
-        .CtxtMenu_ContextMenu:focus {
-            outline: none
-        }
-
-        .CtxtMenu_ContextMenu .CtxtMenu_MenuItem:focus {
-            outline: none
-        }
-
-        .CtxtMenu_SelectionMenu {
-            position: relative;
-            float: left;
-            border-bottom: none;
-            -webkit-box-shadow: none;
-            -webkit-border-radius: 0px;
-        }
-
-        .CtxtMenu_SelectionItem {
-            padding-right: 1em;
-        }
-
-        .CtxtMenu_Selection {
-            right: 40%;
-            width: 50%;
-        }
-
-        .CtxtMenu_SelectionBox {
-            padding: 0em;
-            max-height: 20em;
-            max-width: none;
-            background-color: #FFFFFF;
-        }
-
-        .CtxtMenu_SelectionDivider {
-            clear: both;
-            border-top: 2px solid #000000;
-        }
-
-        .CtxtMenu_Menu .CtxtMenu_MenuClose {
-            top: -10px;
-            left: -10px
-        }
-    </style>
-    <style id="MJX-CHTML-styles">
-        mjx-container[jax="CHTML"] {
-            line-height: 0;
-        }
-
-        mjx-container [space="1"] {
-            margin-left: .111em;
-        }
-
-        mjx-container [space="2"] {
-            margin-left: .167em;
-        }
-
-        mjx-container [space="3"] {
-            margin-left: .222em;
-        }
-
-        mjx-container [space="4"] {
-            margin-left: .278em;
-        }
-
-        mjx-container [space="5"] {
-            margin-left: .333em;
-        }
-
-        mjx-container [rspace="1"] {
-            margin-right: .111em;
-        }
-
-        mjx-container [rspace="2"] {
-            margin-right: .167em;
-        }
-
-        mjx-container [rspace="3"] {
-            margin-right: .222em;
-        }
-
-        mjx-container [rspace="4"] {
-            margin-right: .278em;
-        }
-
-        mjx-container [rspace="5"] {
-            margin-right: .333em;
-        }
-
-        mjx-container [size="s"] {
-            font-size: 70.7%;
-        }
-
-        mjx-container [size="ss"] {
-            font-size: 50%;
-        }
-
-        mjx-container [size="Tn"] {
-            font-size: 60%;
-        }
-
-        mjx-container [size="sm"] {
-            font-size: 85%;
-        }
-
-        mjx-container [size="lg"] {
-            font-size: 120%;
-        }
-
-        mjx-container [size="Lg"] {
-            font-size: 144%;
-        }
-
-        mjx-container [size="LG"] {
-            font-size: 173%;
-        }
-
-        mjx-container [size="hg"] {
-            font-size: 207%;
-        }
-
-        mjx-container [size="HG"] {
-            font-size: 249%;
-        }
-
-        mjx-container [width="full"] {
-            width: 100%;
-        }
-
-        mjx-box {
-            display: inline-block;
-        }
-
-        mjx-block {
-            display: block;
-        }
-
-        mjx-itable {
-            display: inline-table;
-        }
-
-        mjx-row {
-            display: table-row;
-        }
-
-        mjx-row>* {
-            display: table-cell;
-        }
-
-        mjx-mtext {
-            display: inline-block;
-        }
-
-        mjx-mstyle {
-            display: inline-block;
-        }
-
-        mjx-merror {
-            display: inline-block;
-            color: red;
-            background-color: yellow;
-        }
-
-        mjx-mphantom {
-            visibility: hidden;
-        }
-
-        _::-webkit-full-page-media,
-        _:future,
-        :root mjx-container {
-            will-change: opacity;
-        }
-
-        mjx-assistive-mml {
-            position: absolute !important;
-            top: 0px;
-            left: 0px;
-            clip: rect(1px, 1px, 1px, 1px);
-            padding: 1px 0px 0px 0px !important;
-            border: 0px !important;
-            display: block !important;
-            width: auto !important;
-            overflow: hidden !important;
-            -webkit-touch-callout: none;
-            -webkit-user-select: none;
-            -khtml-user-select: none;
-            -moz-user-select: none;
-            -ms-user-select: none;
-            user-select: none;
-        }
-
-        mjx-assistive-mml[display="block"] {
-            width: 100% !important;
-        }
-
-        mjx-c::before {
-            display: block;
-            width: 0;
-        }
-
-        .MJX-TEX {
-            font-family: MJXZERO, MJXTEX;
-        }
-
-        .TEX-B {
-            font-family: MJXZERO, MJXTEX-B;
-        }
-
-        .TEX-I {
-            font-family: MJXZERO, MJXTEX-I;
-        }
-
-        .TEX-MI {
-            font-family: MJXZERO, MJXTEX-MI;
-        }
-
-        .TEX-BI {
-            font-family: MJXZERO, MJXTEX-BI;
-        }
-
-        .TEX-S1 {
-            font-family: MJXZERO, MJXTEX-S1;
-        }
-
-        .TEX-S2 {
-            font-family: MJXZERO, MJXTEX-S2;
-        }
-
-        .TEX-S3 {
-            font-family: MJXZERO, MJXTEX-S3;
-        }
-
-        .TEX-S4 {
-            font-family: MJXZERO, MJXTEX-S4;
-        }
-
-        .TEX-A {
-            font-family: MJXZERO, MJXTEX-A;
-        }
-
-        .TEX-C {
-            font-family: MJXZERO, MJXTEX-C;
-        }
-
-        .TEX-CB {
-            font-family: MJXZERO, MJXTEX-CB;
-        }
-
-        .TEX-FR {
-            font-family: MJXZERO, MJXTEX-FR;
-        }
-
-        .TEX-FRB {
-            font-family: MJXZERO, MJXTEX-FRB;
-        }
-
-        .TEX-SS {
-            font-family: MJXZERO, MJXTEX-SS;
-        }
-
-        .TEX-SSB {
-            font-family: MJXZERO, MJXTEX-SSB;
-        }
-
-        .TEX-SSI {
-            font-family: MJXZERO, MJXTEX-SSI;
-        }
-
-        .TEX-SC {
-            font-family: MJXZERO, MJXTEX-SC;
-        }
-
-        .TEX-T {
-            font-family: MJXZERO, MJXTEX-T;
-        }
-
-        .TEX-V {
-            font-family: MJXZERO, MJXTEX-V;
-        }
-
-        .TEX-VB {
-            font-family: MJXZERO, MJXTEX-VB;
-        }
-
-        mjx-stretchy-v mjx-c,
-        mjx-stretchy-h mjx-c {
-            font-family: MJXZERO, MJXTEX-S1, MJXTEX-S4, MJXTEX, MJXTEX-A ! important;
-        }
-
-        @font-face
-
-        /* 0 */
-            {
-            font-family: MJXZERO;
-            src: url("https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/output/chtml/fonts/woff-v2/MathJax_Zero.woff") format("woff");
-        }
-
-        @font-face
-
-        /* 1 */
-            {
-            font-family: MJXTEX;
-            src: url("https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/output/chtml/fonts/woff-v2/MathJax_Main-Regular.woff") format("woff");
-        }
-
-        @font-face
-
-        /* 2 */
-            {
-            font-family: MJXTEX-B;
-            src: url("https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/output/chtml/fonts/woff-v2/MathJax_Main-Bold.woff") format("woff");
-        }
-
-        @font-face
-
-        /* 3 */
-            {
-            font-family: MJXTEX-I;
-            src: url("https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/output/chtml/fonts/woff-v2/MathJax_Math-Italic.woff") format("woff");
-        }
-
-        @font-face
-
-        /* 4 */
-            {
-            font-family: MJXTEX-MI;
-            src: url("https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/output/chtml/fonts/woff-v2/MathJax_Main-Italic.woff") format("woff");
-        }
-
-        @font-face
-
-        /* 5 */
-            {
-            font-family: MJXTEX-BI;
-            src: url("https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/output/chtml/fonts/woff-v2/MathJax_Math-BoldItalic.woff") format("woff");
-        }
-
-        @font-face
-
-        /* 6 */
-            {
-            font-family: MJXTEX-S1;
-            src: url("https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/output/chtml/fonts/woff-v2/MathJax_Size1-Regular.woff") format("woff");
-        }
-
-        @font-face
-
-        /* 7 */
-            {
-            font-family: MJXTEX-S2;
-            src: url("https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/output/chtml/fonts/woff-v2/MathJax_Size2-Regular.woff") format("woff");
-        }
-
-        @font-face
-
-        /* 8 */
-            {
-            font-family: MJXTEX-S3;
-            src: url("https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/output/chtml/fonts/woff-v2/MathJax_Size3-Regular.woff") format("woff");
-        }
-
-        @font-face
-
-        /* 9 */
-            {
-            font-family: MJXTEX-S4;
-            src: url("https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/output/chtml/fonts/woff-v2/MathJax_Size4-Regular.woff") format("woff");
-        }
-
-        @font-face
-
-        /* 10 */
-            {
-            font-family: MJXTEX-A;
-            src: url("https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/output/chtml/fonts/woff-v2/MathJax_AMS-Regular.woff") format("woff");
-        }
-
-        @font-face
-
-        /* 11 */
-            {
-            font-family: MJXTEX-C;
-            src: url("https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/output/chtml/fonts/woff-v2/MathJax_Calligraphic-Regular.woff") format("woff");
-        }
-
-        @font-face
-
-        /* 12 */
-            {
-            font-family: MJXTEX-CB;
-            src: url("https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/output/chtml/fonts/woff-v2/MathJax_Calligraphic-Bold.woff") format("woff");
-        }
-
-        @font-face
-
-        /* 13 */
-            {
-            font-family: MJXTEX-FR;
-            src: url("https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/output/chtml/fonts/woff-v2/MathJax_Fraktur-Regular.woff") format("woff");
-        }
-
-        @font-face
-
-        /* 14 */
-            {
-            font-family: MJXTEX-FRB;
-            src: url("https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/output/chtml/fonts/woff-v2/MathJax_Fraktur-Bold.woff") format("woff");
-        }
-
-        @font-face
-
-        /* 15 */
-            {
-            font-family: MJXTEX-SS;
-            src: url("https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/output/chtml/fonts/woff-v2/MathJax_SansSerif-Regular.woff") format("woff");
-        }
-
-        @font-face
-
-        /* 16 */
-            {
-            font-family: MJXTEX-SSB;
-            src: url("https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/output/chtml/fonts/woff-v2/MathJax_SansSerif-Bold.woff") format("woff");
-        }
-
-        @font-face
-
-        /* 17 */
-            {
-            font-family: MJXTEX-SSI;
-            src: url("https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/output/chtml/fonts/woff-v2/MathJax_SansSerif-Italic.woff") format("woff");
-        }
-
-        @font-face
-
-        /* 18 */
-            {
-            font-family: MJXTEX-SC;
-            src: url("https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/output/chtml/fonts/woff-v2/MathJax_Script-Regular.woff") format("woff");
-        }
-
-        @font-face
-
-        /* 19 */
-            {
-            font-family: MJXTEX-T;
-            src: url("https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/output/chtml/fonts/woff-v2/MathJax_Typewriter-Regular.woff") format("woff");
-        }
-
-        @font-face
-
-        /* 20 */
-            {
-            font-family: MJXTEX-V;
-            src: url("https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/output/chtml/fonts/woff-v2/MathJax_Vector-Regular.woff") format("woff");
-        }
-
-        @font-face
-
-        /* 21 */
-            {
-            font-family: MJXTEX-VB;
-            src: url("https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/output/chtml/fonts/woff-v2/MathJax_Vector-Bold.woff") format("woff");
-        }
-    </style>
-    <script id="altmetric-embed-js"
-        src="./files/altmetric_badges-ffa94af28b7f8e4e5169b7ec2ad8e1e94e231143f796594a1ab2753a4fb0acb4.js"></script>
-    <link rel="stylesheet" href="./files/badge.css">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Personal website for Banruo Liu.">
+  <title>Banruo Liu</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --bg: #faf9f6;
+      --ink: #202124;
+      --muted: #62686d;
+      --line: #ddd8cf;
+      --card: #ffffff;
+      --accent: #1f6f62;
+      --max: 900px;
+    }
+
+    * { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--ink);
+      font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      line-height: 1.6;
+    }
+
+    a {
+      color: var(--accent);
+      text-underline-offset: 3px;
+    }
+
+    .wrap {
+      width: min(var(--max), calc(100vw - 32px));
+      margin: 0 auto;
+    }
+
+    header {
+      border-bottom: 1px solid var(--line);
+      background: rgba(250, 249, 246, 0.94);
+    }
+
+    nav {
+      min-height: 64px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+    }
+
+    .name {
+      color: var(--ink);
+      text-decoration: none;
+      font-weight: 750;
+    }
+
+    .links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      justify-content: flex-end;
+      font-size: 14px;
+    }
+
+    .links a {
+      color: var(--muted);
+      text-decoration: none;
+    }
+
+    .links a:hover { color: var(--ink); }
+
+    main { padding: 56px 0 34px; }
+
+    .intro {
+      display: grid;
+      grid-template-columns: 1fr 220px;
+      gap: 40px;
+      align-items: start;
+      padding-bottom: 42px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .photo {
+      width: 260px;
+      aspect-ratio: 4 / 3;
+      display: grid;
+      place-items: center;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--card);
+      color: var(--muted);
+      text-align: center;
+      font-size: 14px;
+    }
+
+    .photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: 28% center;
+      display: block;
+    }
+
+    h1,
+    h2,
+    h3,
+    p { margin-top: 0; }
+
+    h1 {
+      margin-bottom: 12px;
+      font-size: clamp(36px, 7vw, 60px);
+      line-height: 1.05;
+      letter-spacing: 0;
+    }
+
+    h2 {
+      margin-bottom: 14px;
+      font-size: 24px;
+      line-height: 1.2;
+      letter-spacing: 0;
+    }
+
+    h3 {
+      margin-bottom: 4px;
+      font-size: 17px;
+      letter-spacing: 0;
+    }
+
+    .subtitle {
+      max-width: 650px;
+      margin-bottom: 22px;
+      color: var(--muted);
+      font-size: 19px;
+    }
+
+    .chinese-name {
+      margin: -4px 0 16px;
+      color: var(--muted);
+      font-size: 18px;
+      font-weight: 500;
+    }
+
+    .button-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 38px;
+      padding: 8px 13px;
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      background: var(--card);
+      color: var(--ink);
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 650;
+    }
+
+    .button.primary {
+      background: var(--ink);
+      border-color: var(--ink);
+      color: #fff;
+    }
+
+    section {
+      padding: 34px 0;
+      border-bottom: 1px solid var(--line);
+    }
+
+    section:last-child { border-bottom: 0; }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+    }
+
+    .item {
+      padding: 18px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--card);
+    }
+
+    .item p,
+    .plain-list p {
+      margin-bottom: 0;
+      color: var(--muted);
+    }
+
+    .plain-list {
+      display: grid;
+      gap: 18px;
+    }
+
+    .publications {
+      gap: 22px;
+    }
+
+    .publications div {
+      padding-bottom: 18px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .publications div:last-child {
+      padding-bottom: 0;
+      border-bottom: 0;
+    }
+
+    .publications p + p {
+      margin-top: 6px;
+    }
+
+    .note {
+      margin: 18px 0 0;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .role-meta {
+      margin-bottom: 6px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    footer {
+      padding: 24px 0 36px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    @media (max-width: 720px) {
+      nav,
+      .intro {
+        grid-template-columns: 1fr;
+      }
+
+      nav {
+        align-items: flex-start;
+        flex-direction: column;
+        padding: 16px 0;
+      }
+
+      main { padding-top: 38px; }
+
+      .intro { gap: 24px; }
+
+      .photo {
+        width: min(220px, 100%);
+      }
+
+      .grid { grid-template-columns: 1fr; }
+    }
+  </style>
 </head>
+<body>
+  <header>
+    <nav class="wrap">
+      <a class="name" href="#top">Banruo Liu</a>
+      <div class="links" aria-label="Site links">
+        <a href="#about">About</a>
+        <a href="#experience">Experience</a>
+        <a href="#publications">Publications</a>
+      </div>
+    </nav>
+  </header>
 
-<body class="fixed-top-nav sticky-bottom-footer" style="padding-top: 71px;">
-    <header>
-        <nav id="navbar" class="navbar navbar-light navbar-expand-sm fixed-top" role="navigation">
-            <div class="container"> <button class="navbar-toggler collapsed ml-auto" type="button"
-                    data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false"
-                    aria-label="Toggle navigation"> <span class="sr-only">Toggle navigation</span> <span
-                        class="icon-bar top-bar"></span> <span class="icon-bar middle-bar"></span> <span
-                        class="icon-bar bottom-bar"></span> </button>
-                <div class="collapse navbar-collapse text-right" id="navbarNav">
-                    <ul class="navbar-nav ml-auto flex-nowrap">
-                        <li class="nav-item active"> <a class="nav-link" href="https://livingshade.github.io/">About
-                                <span class="sr-only">(current)</span> </a> </li>
-                    </ul>
-                </div>
-            </div>
-        </nav> <progress id="progress" value="0" max="709" style="top: 71px;">
-            <div class="progress-container"> <span class="progress-bar"></span> </div>
-        </progress>
-    </header>
-    <div class="container mt-5" role="main">
-        <div class="post">
-            <header class="post-header">
-                <h1 class="post-title"> Banruo Liu (刘般若) </h1>
-                <p class="desc"></p>
-            </header>
-            <article>
-                <div class="profile float-right">
-                    <figure>
-                        <picture>
-                            <img src="./assets/banruo.jpg" class="img-fluid z-depth-1 rounded" width="100%"
-                                height="auto" alt="banruo.jpg" loading="eager"
-                                onerror="this.onerror=null; $(&#39;.responsive-img-srcset&#39;).remove();">
-                        </picture>
-                    </figure>
-                    <div class="social">
-                        <div class="contact-notes">
-                            <a href="mailto:banruol2%40illinois.edu" title="email">Email</a> |
-                            <a href="https://github.com/livingshade" title="Github" rel="external nofollow noopener"
-                                target="_blank">Github</a>
-                            <a href="./assets/banruo_cv.pdf" title="CV" rel="external nofollow noopener"
-                                target="_blank">| CV</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="clearfix">
-                    <p>I’m a Ph.D. student in AISys Lab at UIUC, advised by Prof. <a href="https://www.fanlai.me/"
-                            rel="external nofollow noopener" target="_blank">Fan Lai</a>.
-                        I received my B.Eng. in Computer Science at Tsinghua University. I worked with Prof. Arvind
-                        Krishnamurthy and Prof. Ratul Majahan at University of Washington during my junior year. I also
-                        worked with Prof. Marco Canini at KAUST during my senior year. </p>
-                    <p>My research interests lie in building system support for machine learning applications.</p>
-                </div>
-                <h2> Publications </h2>
-                <hr style="margin-top: 2px; margin-bottom: 2px;">
-                <p style="margin-top: 2px;"><em>* means equal contribution</em></p>
-                <div class="publications">
-                    <ol class="bibliography">
-                        <li>
-                            <div class="row">
-                                <div id="wei2026nsdi">
-                                    <div class="title">JITServe: SLO-aware LLM Serving with Imprecise Request Information
-                                    </div>
-                                    <div class="author">Wei Zhang*, &nbsp Zhiyu Wu*,&nbsp Yi Mu,&nbsp Rui Ning,&nbsp <em>Banruo Liu</em>,&nbsp Nikhil Sarda,&nbsp Myungjin Lee, &nbsp Fan Lai</div>
-                                    <div class="entry-info"> <i>NSDI, 2026</i>
-                                        | <a href="https://arxiv.org/abs/2504.20068" target="_blank"
-                                            rel="external nofollow noopener">Paper</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="row">
-                                <div id="zhu2025nsdi">
-                                    <div class="title">High-level Programming for Application Networks
-                                    </div>
-                                    <div class="author">Xiangfeng Zhu,&nbsp; Yuyao Wang,&nbsp; <em>Banruo
-                                            Liu</em>,&nbsp;Yongtong
-                                        Wu,&nbsp; Nikola Bojanic, &nbsp;Jingrong Chen,&nbsp; Gilbert Bernstein,&nbsp;
-                                        Arvind Krishnamurthy, &nbsp;Sam Kumar,&nbsp; Ratul Mahajan, &nbsp;Danyang Zhuo
-                                    </div>
-                                    <div class="entry-info"> <i>NSDI, 2025</i>
-                                        | <a href="https://github.com/appnet-org/appnet" target="_blank"
-                                            rel="external nofollow noopener">Paper</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="row">
-                                <div id="liu2024apsys">
-                                    <div class="title">Towards a Flexible and High-Fidelity Approach to Distributed DNN
-                                        Training Emulation </div>
-                                    <div class="author"><em>Banruo Liu</em>,&nbsp;Mubarak Adetunji
-                                        Ojewale,&nbsp;Yuhan Ding,&nbsp;Marco Canini </div>
-                                    <div class="entry-info"> <i>APSys, 2024</i> | <a
-                                            href="https://mcanini.github.io/papers/neuronabox.apsys24.pdf"
-                                            target="_blank" rel="external nofollow noopener">Paper</a> | <a
-                                            href="https://github.com/sands-lab/NeuronaBox" target="_blank"
-                                            rel="external nofollow noopener">Code</a> </div>
-                                </div>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="row">
-                                <div id="zhu2023hotnets">
-                                    <div class="title">Application Defined Networks
-                                    </div>
-                                    <div class="author"> Xiangfeng Zhu,&nbsp; Weixin Deng,&nbsp; <em>Banruo
-                                            Liu</em>,&nbsp;Jingrong Chen,&nbsp; Yongji Wu, &nbsp;Tom
-                                        Anderson,
-                                        Arvind Krishnamurthy,&nbsp; Ratul Mahajan, &nbsp;Danyang Zhuo
-                                    </div>
-                                    <div class="entry-info"> <i>HotNets, 2023</i> | <a
-                                            href="https://ratul.org/papers/hotnets2023-adn.pdf" target="_blank"
-                                            rel="external nofollow noopener">Paper</a>
-                                    </div>
-                                </div>
-                        </li>
-                    </ol>
-                </div>
-            </article>
+  <main id="top" class="wrap">
+    <div class="intro">
+      <div>
+        <h1>Hi, I am Banruo.</h1>
+        <p class="chinese-name">劉般若</p>
+        <p class="subtitle">
+          I work on AI systems, LLM serving, and distributed infrastructure. I like building practical systems
+          that make machine learning faster, more reliable, and easier to use.
+        </p>
+        <div class="button-row">
+          <a class="button primary" href="CV_tsinghua_Banruo_English.pdf">View CV</a>
+          <a class="button" href="mailto:banruol2@illinois.edu">Email</a>
+          <a class="button" href="https://github.com/livingshade">GitHub</a>
+          <a class="button" href="https://www.linkedin.com/in/banruo-liu-464071284">LinkedIn</a>
+          <a class="button" href="https://dblp.org/pid/316/8157.html">DBLP</a>
         </div>
+      </div>
+
+      <div class="photo">
+        <img src="avatar.jpg" alt="Photo of Banruo Liu">
+      </div>
     </div>
-    <footer class="sticky-bottom mt-5" role="contentinfo">
-        <div class="container"> © Copyright 2024 Banruo Liu. Powered by HTML. Last updated: Dec.11, 2024.
-        </div>
-    </footer>
-    <script src="./files/jquery.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
-        crossorigin="anonymous"></script>
-    <script src="./files/bootstrap.bundle.min.js"></script>
-    <script src="./files/mdb.min.js" integrity="sha256-NdbiivsvWt7VYCt6hYNT3h/th9vSTL4EDWeGs5SN3DA="
-        crossorigin="anonymous"></script>
-    <script defer="" src="./files/masonry.pkgd.min.js" integrity="sha256-Nn1q/fx0H7SNLZMQ5Hw5JLaTRZp0yILA/FRexe19VdI="
-        crossorigin="anonymous"></script>
-    <script defer="" src="./files/imagesloaded.pkgd.min.js"
-        integrity="sha256-htrLFfZJ6v5udOG+3kNLINIKh2gvoKqwEhHYfTTMICc=" crossorigin="anonymous"></script>
-    <script defer="" src="./files/masonry.js" type="text/javascript"></script>
-    <script defer="" src="./files/medium-zoom.min.js" integrity="sha256-ZgMyDAIYDYGxbcpJcfUnYwNevG/xi9OHKaR/8GK+jWc="
-        crossorigin="anonymous"></script>
-    <script defer="" src="./files/zoom.js"></script>
-    <script src="./files/no_defer.js"></script>
-    <script defer="" src="./files/common.js"></script>
-    <script defer="" src="./files/copy_code.js" type="text/javascript"></script>
-    <script defer="" src="./files/jupyter_new_tab.js"></script>
-    <script async="" src="./files/embed.js"></script>
-    <script async="" src="./files/badge.js"></script>
-    <script type="text/javascript">window.MathJax = { tex: { tags: "ams" } };</script>
-    <script defer="" type="text/javascript" id="MathJax-script" src="./files/tex-mml-chtml.js"
-        integrity="sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI=" crossorigin="anonymous"></script>
-    <script defer="" src="./files/polyfill.min.js" crossorigin="anonymous"></script>
-    <script
-        type="text/javascript">function progressBarSetup() { "max" in document.createElement("progress") ? (initializeProgressElement(), $(document).on("scroll", function () { progressBar.attr({ value: getCurrentScrollPosition() }) }), $(window).on("resize", initializeProgressElement)) : (resizeProgressBar(), $(document).on("scroll", resizeProgressBar), $(window).on("resize", resizeProgressBar)) } function getCurrentScrollPosition() { return $(window).scrollTop() } function initializeProgressElement() { let e = $("#navbar").outerHeight(!0); $("body").css({ "padding-top": e }), $("progress-container").css({ "padding-top": e }), progressBar.css({ top: e }), progressBar.attr({ max: getDistanceToScroll(), value: getCurrentScrollPosition() }) } function getDistanceToScroll() { return $(document).height() - $(window).height() } function resizeProgressBar() { progressBar.css({ width: getWidthPercentage() + "%" }) } function getWidthPercentage() { return getCurrentScrollPosition() / getDistanceToScroll() * 100 } const progressBar = $("#progress"); window.onload = function () { setTimeout(progressBarSetup, 50) };</script>
-    <div class="hiddendiv common"></div><iframe id="to7GTPLe" frameborder="0" src="./files/translateSandbox.html"
-        style="width: 0px; height: 0px; display: none;"></iframe>
-</body>
 
+    <section id="about">
+      <h2>About</h2>
+      <p>
+        I am a Ph.D. student in Computer Science at the University of Illinois Urbana-Champaign, advised by
+        Prof. Fan Lai, and I expect to receive my master's degree this year while continuing my Ph.D. I received
+        my B.Eng. in Computer Science from Tsinghua University. I am interested in
+        the systems side of AI: serving, scheduling, GPU clusters, cloud infrastructure, and the engineering
+        details that turn research ideas into working platforms. Before UIUC, I was a research assistant at
+        SANDS Lab, KAUST, advised by Prof. Marco Canini, and at SysLab, University of Washington, advised by
+        Prof. Arvind Krishnamurthy and Prof. Ratul Mahajan.
+      </p>
+    </section>
+
+    <section id="experience">
+      <h2>Experience</h2>
+      <div class="plain-list">
+        <div>
+          <h3>Microsoft</h3>
+          <p class="role-meta">Azure Research, Research Intern, Redmond, WA / May 2026 - Aug. 2026</p>
+          <p class="role-meta">Manager: Esha Choukse and Haoran Qiu </p>
+          <p>Currently working on system and harness for coding agent.</p>
+        </div>
+        <div>
+          <h3>Google</h3>
+          <p class="role-meta">System Research Group, Student Researcher, Sunnyvale, CA / May 2025 - May 2026</p>
+          <p class="role-meta">Manager: Yeounoh Chung and Brent Stephens</p>
+          <p>
+            Worked on AI systems research related to real-time agentic serving.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section id="publications">
+      <h2>Publications</h2>
+      <div class="plain-list publications">
+        <div>
+          <h3>Real-Time Agentic Serving via Just-in-Time Dataflow Execution</h3>
+          <p><strong>In submission.</strong> Details limited while under review.</p>
+          <p>Systems work for real-time agentic LLM serving.</p>
+        </div>
+        <div>
+          <h3>Single-agent or Multi-agent Systems? Why Not Both?</h3>
+          <p><strong>In submission.</strong> Mingyan Gao*, Yanzi Li*, Banruo Liu*, Yifan Yu, Phillip Wang, Ching-Yu Lin, Fan Lai.</p>
+          <p>Empirical study of single-agent and multi-agent LLM systems; proposes routing and cascade strategies for cost-quality tradeoffs in agentic applications.</p>
+        </div>
+        <div>
+          <h3>Compass: SLO-aware Query Planner for Compound AI Serving at Scale</h3>
+          <p><strong>VLDB 2026.</strong> Banruo Liu, Wei-Yu Lin, Minghao Fang, Yihan Jiang, Fan Lai.</p>
+          <p>SLO-aware query planner for compound AI pipelines; improves service goodput by 2.4-5.1x and reduces deployment cost by 3.8-4.5x.</p>
+        </div>
+        <div>
+          <h3>JITServe: SLO-aware LLM Serving with Imprecise Request Information</h3>
+          <p><strong>NSDI 2026.</strong> Wei Zhang*, Zhiyu Wu*, Yi Mu, Rui Ning, Banruo Liu, Nikhil Sarda, Myungjin Lee, Fan Lai.</p>
+          <p>LLM serving scheduler for latency-sensitive, deadline-sensitive, and compound requests under response-length and dependency uncertainty.</p>
+        </div>
+        <div>
+          <h3>High-level Programming for Application Networks</h3>
+          <p><strong>NSDI 2025.</strong> Xiangfeng Zhu, Yuyao Wang, Banruo Liu, Yongtong Wu, Nikola Bojanic, Jingrong Chen, Gilbert Bernstein, Arvind Krishnamurthy, Sam Kumar, Ratul Mahajan, Danyang Zhuo.</p>
+          <p>High-level language, compiler, and controller for programmable application networks in microservice systems.</p>
+        </div>
+        <div>
+          <h3>Towards a Flexible and High-Fidelity Approach to Distributed DNN Training Emulation</h3>
+          <p><strong>APSys 2024.</strong> Banruo Liu, Mubarak Adetunji Ojewale, Yuhan Ding, Marco Canini.</p>
+          <p>Distributed DNN training emulator that executes real training nodes while emulating networked collective communication.</p>
+        </div>
+        <div>
+          <h3>Application Defined Networks</h3>
+          <p><strong>HotNets 2023.</strong> Xiangfeng Zhu, Weixin Deng, Banruo Liu, Jingrong Chen, Yongji Wu, Thomas Anderson, Arvind Krishnamurthy, Ratul Mahajan, Danyang Zhuo.</p>
+          <p>Position paper on application-defined networking for programmable microservice communication and application-aware network functions.</p>
+        </div>
+      </div>
+      <p class="note">* denotes equal contribution where applicable.</p>
+    </section>
+
+  </main>
+
+  <footer class="wrap">
+    &copy; <span id="year"></span> Banruo Liu
+  </footer>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
 </html>
