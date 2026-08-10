@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Personal website for Banruo Liu.">
+  <meta name="description" content="Banruo Liu is an MCS student at UIUC working on agentic AI systems, LLM serving, and distributed infrastructure.">
   <title>Banruo Liu</title>
   <style>
     :root {
@@ -269,6 +269,7 @@
       <a class="name" href="#top">Banruo Liu</a>
       <div class="links" aria-label="Site links">
         <a href="#about">About</a>
+        <a href="#education">Education</a>
         <a href="#experience">Experience</a>
         <a href="#publications">Publications</a>
       </div>
@@ -281,11 +282,11 @@
         <h1>Hi, I am Banruo.</h1>
         <p class="chinese-name">劉般若</p>
         <p class="subtitle">
-          I work on AI systems, LLM serving, and distributed infrastructure. I like building practical systems
-          that make machine learning faster, more reliable, and easier to use.
+          MCS student at UIUC building systems for agentic AI, LLM serving, compound AI applications,
+          and distributed infrastructure.
         </p>
         <div class="button-row">
-          <a class="button primary" href="CV_tsinghua_Banruo_English.pdf">View CV</a>
+          <a class="button primary" href="assets/banruo_cv.pdf">View CV</a>
           <a class="button" href="mailto:banruol2@illinois.edu">Email</a>
           <a class="button" href="https://github.com/livingshade">GitHub</a>
           <a class="button" href="https://www.linkedin.com/in/banruo-liu-464071284">LinkedIn</a>
@@ -301,31 +302,47 @@
     <section id="about">
       <h2>About</h2>
       <p>
-        I am a Ph.D. student in Computer Science at the University of Illinois Urbana-Champaign, advised by
-        Prof. Fan Lai, and I expect to receive my master's degree this year while continuing my Ph.D. I received
-        my B.Eng. in Computer Science from Tsinghua University. I am interested in
-        the systems side of AI: serving, scheduling, GPU clusters, cloud infrastructure, and the engineering
-        details that turn research ideas into working platforms. Before UIUC, I was a research assistant at
-        SANDS Lab, KAUST, advised by Prof. Marco Canini, and at SysLab, University of Washington, advised by
-        Prof. Arvind Krishnamurthy and Prof. Ratul Mahajan.
+        I am a Master of Computer Science student at the University of Illinois Urbana-Champaign, advised by
+        Prof. Fan Lai, and expect to graduate in December 2026. I transitioned from the Ph.D. program to the MCS
+        program after two years of graduate research. My work focuses on the systems side of AI: serving and
+        scheduling for agentic and compound AI applications, GPU infrastructure, and distributed systems. I
+        received my B.Eng. in Computer Science from Tsinghua University.
       </p>
+    </section>
+
+    <section id="education">
+      <h2>Education</h2>
+      <div class="grid">
+        <div class="item">
+          <h3>University of Illinois Urbana-Champaign</h3>
+          <p class="role-meta">Master of Computer Science / Expected Dec. 2026</p>
+          <p>Advisor: Prof. Fan Lai. Transitioned from the Ph.D. program to the MCS program.</p>
+        </div>
+        <div class="item">
+          <h3>Tsinghua University</h3>
+          <p class="role-meta">B.Eng. in Computer Science / Jul. 2024</p>
+          <p>Advisor: Prof. Youyou Lu.</p>
+        </div>
+      </div>
     </section>
 
     <section id="experience">
       <h2>Experience</h2>
       <div class="plain-list">
         <div>
-          <h3>Microsoft</h3>
+          <h3>Microsoft Azure Research</h3>
           <p class="role-meta">Azure Research, Research Intern, Redmond, WA / May 2026 - Aug. 2026</p>
-          <p class="role-meta">Manager: Esha Choukse and Haoran Qiu </p>
-          <p>Currently working on system and harness for coding agent.</p>
+          <p>
+            Characterized production-scale GitHub Copilot agentic coding workloads and identified system
+            optimization opportunities for coding agents and their harness.
+          </p>
         </div>
         <div>
-          <h3>Google</h3>
+          <h3>Google System Research</h3>
           <p class="role-meta">System Research Group, Student Researcher, Sunnyvale, CA / May 2025 - May 2026</p>
-          <p class="role-meta">Manager: Yeounoh Chung and Brent Stephens</p>
           <p>
-            Worked on AI systems research related to real-time agentic serving.
+            Led Magnet, a vLLM-compatible serving engine for real-time agentic LLM applications represented as
+            multi-stage dataflow graphs.
           </p>
         </div>
       </div>
@@ -335,38 +352,43 @@
       <h2>Publications</h2>
       <div class="plain-list publications">
         <div>
-          <h3>Real-Time Agentic Serving via Just-in-Time Dataflow Execution</h3>
-          <p><strong>In submission.</strong> Details limited while under review.</p>
-          <p>Systems work for real-time agentic LLM serving.</p>
+          <h3>Agentic Coding in the Wild: Characterizing GitHub Copilot Traces at Production Scale</h3>
+          <p><strong>Preprint.</strong> <strong>Banruo Liu</strong>, Haoran Qiu, Íñigo Goiri, Rodrigo Fonseca, Ricardo Bianchini, Esha Choukse.</p>
+          <p>Production-scale characterization of agentic coding workloads, revealing key system optimization opportunities for agent serving.</p>
+        </div>
+        <div>
+          <h3>Magnet: Real-Time Agentic Serving via Just-in-Time Dataflow Execution</h3>
+          <p><strong>In submission.</strong> <strong>Banruo Liu*</strong>, Tony Hong*, Yeounoh Chung, Brent Stephens, Arvind Krishnamurthy, Fan Lai.</p>
+          <p>Serving engine for real-time agentic LLM dataflows with just-in-time execution and topology-aware GPU allocation.</p>
         </div>
         <div>
           <h3>Single-agent or Multi-agent Systems? Why Not Both?</h3>
-          <p><strong>In submission.</strong> Mingyan Gao*, Yanzi Li*, Banruo Liu*, Yifan Yu, Phillip Wang, Ching-Yu Lin, Fan Lai.</p>
+          <p><strong>In submission.</strong> Mingyan Gao*, Yanzi Li*, <strong>Banruo Liu*</strong>, Yifan Yu, Phillip Wang, Ching-Yu Lin, Fan Lai.</p>
           <p>Empirical study of single-agent and multi-agent LLM systems; proposes routing and cascade strategies for cost-quality tradeoffs in agentic applications.</p>
         </div>
         <div>
           <h3>Compass: SLO-aware Query Planner for Compound AI Serving at Scale</h3>
-          <p><strong>VLDB 2026.</strong> Banruo Liu, Wei-Yu Lin, Minghao Fang, Yihan Jiang, Fan Lai.</p>
+          <p><strong>VLDB 2026.</strong> <strong>Banruo Liu</strong>, Wei-Yu Lin, Minghao Fang, Yihan Jiang, Fan Lai.</p>
           <p>SLO-aware query planner for compound AI pipelines; improves service goodput by 2.4-5.1x and reduces deployment cost by 3.8-4.5x.</p>
         </div>
         <div>
           <h3>JITServe: SLO-aware LLM Serving with Imprecise Request Information</h3>
-          <p><strong>NSDI 2026.</strong> Wei Zhang*, Zhiyu Wu*, Yi Mu, Rui Ning, Banruo Liu, Nikhil Sarda, Myungjin Lee, Fan Lai.</p>
+          <p><strong>NSDI 2026.</strong> Wei Zhang*, Zhiyu Wu*, Yi Mu, Rui Ning, <strong>Banruo Liu</strong>, Nikhil Sarda, Myungjin Lee, Fan Lai.</p>
           <p>LLM serving scheduler for latency-sensitive, deadline-sensitive, and compound requests under response-length and dependency uncertainty.</p>
         </div>
         <div>
           <h3>High-level Programming for Application Networks</h3>
-          <p><strong>NSDI 2025.</strong> Xiangfeng Zhu, Yuyao Wang, Banruo Liu, Yongtong Wu, Nikola Bojanic, Jingrong Chen, Gilbert Bernstein, Arvind Krishnamurthy, Sam Kumar, Ratul Mahajan, Danyang Zhuo.</p>
+          <p><strong>NSDI 2025.</strong> Xiangfeng Zhu, Yuyao Wang, <strong>Banruo Liu</strong>, Yongtong Wu, Nikola Bojanic, Jingrong Chen, Gilbert Bernstein, Arvind Krishnamurthy, Sam Kumar, Ratul Mahajan, Danyang Zhuo.</p>
           <p>High-level language, compiler, and controller for programmable application networks in microservice systems.</p>
         </div>
         <div>
           <h3>Towards a Flexible and High-Fidelity Approach to Distributed DNN Training Emulation</h3>
-          <p><strong>APSys 2024.</strong> Banruo Liu, Mubarak Adetunji Ojewale, Yuhan Ding, Marco Canini.</p>
+          <p><strong>APSys 2024.</strong> <strong>Banruo Liu</strong>, Mubarak Adetunji Ojewale, Yuhan Ding, Marco Canini.</p>
           <p>Distributed DNN training emulator that executes real training nodes while emulating networked collective communication.</p>
         </div>
         <div>
           <h3>Application Defined Networks</h3>
-          <p><strong>HotNets 2023.</strong> Xiangfeng Zhu, Weixin Deng, Banruo Liu, Jingrong Chen, Yongji Wu, Thomas Anderson, Arvind Krishnamurthy, Ratul Mahajan, Danyang Zhuo.</p>
+          <p><strong>HotNets 2023.</strong> Xiangfeng Zhu, Weixin Deng, <strong>Banruo Liu</strong>, Jingrong Chen, Yongji Wu, Thomas Anderson, Arvind Krishnamurthy, Ratul Mahajan, Danyang Zhuo.</p>
           <p>Position paper on application-defined networking for programmable microservice communication and application-aware network functions.</p>
         </div>
       </div>
