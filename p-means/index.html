@@ -5,10 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#f7f7f2">
   <title>p-means · A benchmark parody</title>
-  <meta name="description" content="A faster o-means recipe, an interactive centroid search, and eight H100 benchmarks that explain the 218.5× headline.">
-  <meta property="og:title" content="p-means · Every additional hyperparameter">
-  <meta property="og:description" content="218.5× on DINOv3 10M. See the other seven, too.">
-  <meta property="og:image" content="https://livingshade.github.io/p-means/media/h100-race.jpg">
+  <meta name="description" content="One p-means rule across eight H100 datasets, with a 2.76× geometric mean speedup over e-means.">
+  <meta property="og:title" content="p-means · One rule across eight H100 datasets">
+  <meta property="og:description" content="2.76× over e-means across eight datasets, using one rule.">
+  <meta property="og:image" content="https://livingshade.github.io/p-means/media/h100-race.jpg?v=71ddf59">
   <link rel="canonical" href="https://livingshade.github.io/p-means/">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -32,13 +32,13 @@
     <section class="hero" aria-labelledby="title">
       <div>
         <p class="eyebrow"><span aria-hidden="true"></span>A benchmark parody</p>
-        <h1 id="title">Every additional<br>hyperparameter<span class="dot">.</span></h1>
-        <p class="dek">p-means tunes o-means for the H100. We kept the paper’s error target and gave every dataset its own recipe.</p>
+        <h1 id="title">One rule.<br>Eight datasets<span class="dot">.</span></h1>
+        <p class="dek">p-means builds on o-means for the H100. All eight datasets use the same rule and the paper’s held-out error target.</p>
       </div>
       <a class="hero-stat" href="#results">
-        <span class="mono kicker">DINOv3 / 10M / H100</span>
-        <span class="hero-number">218.5<span>×</span></span>
-        <span class="stat-detail">vs Flash-KMeans after 25 iterations.<br>At the same held-out error target.</span>
+        <span class="mono kicker">8 DATASETS / H100 80GB</span>
+        <span class="hero-number">2.76<span>×</span></span>
+        <span class="stat-detail">Geometric mean speedup over e-means.<br>At the paper’s held-out error target.</span>
         <span class="stat-action">See all eight datasets <span aria-hidden="true">↓</span></span>
       </a>
     </section>
@@ -79,9 +79,9 @@
         <h2 id="method-heading">What p-means changes</h2>
         <p class="standfirst">e-means updates centroids with a mini-batch moving average. o-means adds a two-level index over the centroids. p-means keeps that index and changes how the GPU work and the final centroid update are done.</p>
         <dl class="method-list">
-          <div><dt>Closing mean</dt><dd>At every training budget, the final centroid is the ratio of an EMA of sums to an EMA of counts. The H100 recipes use a half-pass window.</dd></div>
+          <div><dt>Closing mean</dt><dd>At every training budget, the final centroid is the ratio of an EMA of sums to an EMA of counts. The shared H100 rule uses a half-pass window.</dd></div>
           <div><dt>GPU kernels</dt><dd>Wider scan tiles, grouped accumulation and a cell rebuild without the host read-back reduce work per pass.</dd></div>
-          <div><dt>Per-dataset recipes</dt><dd>Batch size and the number of cells to probe were swept on seed 10. Seed 10 also contributes to the reported results.</dd></div>
+          <div><dt>One rule</dt><dd>Probe four cells and close with a half-pass window. Batch size follows the input size: 65,536 at 1M rows and 262,144 at 10M.</dd></div>
         </dl>
         <a class="text-link" href="https://github.com/livingshade/p-means/tree/main/contrib/p_means">Read the implementation <span aria-hidden="true">↗</span></a>
       </div>
@@ -91,16 +91,16 @@
       <div class="section-label mono">H100 results</div>
       <div class="section-content">
         <h2 id="results-heading">One error target. Four clocks.</h2>
-        <p class="standfirst">On DINOv3 10M, all four methods are scored against the held-out error from Flash-KMeans at 25 iterations, per seed. The animation reconstructs the clocks from the reported ratios.</p>
+        <p class="standfirst">On DINOv3 10M, p-means reached the Flash-KMeans@25 error target 218.5× faster. The animation reconstructs all four clocks from the reported ratios. The table gives results for all eight datasets.</p>
         <figure class="race">
-          <video controls playsinline preload="none" poster="media/h100-race.jpg" aria-label="27-second H100 benchmark animation">
-            <source src="media/h100-race.mp4" type="video/mp4">
-            <a href="media/h100-race.mp4">Download the H100 benchmark animation.</a>
+          <video controls playsinline preload="none" poster="media/h100-race.jpg?v=71ddf59" aria-label="27-second H100 benchmark animation">
+            <source src="media/h100-race.mp4?v=71ddf59" type="video/mp4">
+            <a href="media/h100-race.mp4?v=71ddf59">Download the H100 benchmark animation.</a>
           </video>
         </figure>
         <div class="table-intro">
           <h3>All eight datasets</h3>
-          <p><strong>3.01×</strong> geometric mean vs e-means</p>
+          <p><strong>46.0×</strong> geometric mean vs Flash-KMeans@25</p>
         </div>
         <div class="table-scroll" tabindex="0" role="region" aria-label="H100 results table">
           <table>
@@ -111,25 +111,25 @@
                 <th scope="col">Flash-KMeans@25 <small>Paper baseline</small></th>
                 <th scope="col">e-means <small>Paper reference</small></th>
                 <th scope="col">o-means <small>H100 measured</small></th>
-                <th scope="col" class="winner"><strong>p-means</strong> <small>H100 measured</small></th>
+                <th scope="col"><strong>p-means</strong> <small>H100 measured</small></th>
               </tr>
             </thead>
             <tbody>
               <tr><th scope="row">DEEP* 1M</th><td>1.0×</td><td>12.8×</td><td>20.1×</td><td class="winner"><strong>29.2×</strong></td></tr>
               <tr><th scope="row">DINOv3/4096 1M</th><td>1.0×</td><td>12.7×</td><td>20.1×</td><td class="winner"><strong>30.5×</strong></td></tr>
-              <tr><th scope="row">SPACEV 1M</th><td>1.0×</td><td>9.5×</td><td>13.2×</td><td class="winner"><strong>16.2×</strong></td></tr>
+              <tr><th scope="row">SPACEV 1M</th><td>1.0×</td><td>9.5×</td><td>13.2×</td><td class="winner"><strong>15.1×</strong></td></tr>
               <tr><th scope="row">SimSearchNet++ 1M</th><td>1.0×</td><td>12.9×</td><td>21.1×</td><td class="winner"><strong>30.8×</strong></td></tr>
               <tr><th scope="row">DEEP* 10M</th><td>1.0×</td><td>27.8×</td><td>48.5×</td><td class="winner"><strong>131.3×</strong></td></tr>
               <tr class="featured"><th scope="row">DINOv3/4096 10M</th><td>1.0×</td><td>23.3×</td><td>66.2×</td><td class="winner"><strong>218.5×</strong></td></tr>
-              <tr><th scope="row">SPACEV 10M</th><td>1.0×</td><td>19.2×</td><td>23.7×</td><td class="winner"><strong>42.5×</strong></td></tr>
+              <tr><th scope="row">SPACEV 10M</th><td>1.0×</td><td>19.2×</td><td class="winner"><strong>23.7×</strong></td><td>23.2×</td></tr>
               <tr><th scope="row">SimSearchNet++ 10M</th><td>1.0×</td><td>23.8×</td><td>31.9×</td><td class="winner"><strong>72.5×</strong></td></tr>
             </tbody>
           </table>
         </div>
         <details class="protocol">
           <summary>How the benchmark was run</summary>
-          <p>Flash-KMeans and e-means use the paper’s H100 reference numbers. o-means uses its defaults and p-means uses per-dataset recipes, measured on one NVIDIA H100 80GB. Each seed’s speedup is the Flash-KMeans@25 time divided by the time at the first tested budget that reaches its held-out MSE.</p>
-          <p>The 1M results use ten seeds. The 10M results use three, including the tuning seed. The paper uses ten throughout. One e-means rerun on DEEP* 10M took 0.519 s here, compared with about 0.569 s implied by the paper’s summary.</p>
+          <p>Flash-KMeans and e-means use the paper’s H100 reference numbers. o-means uses its defaults and p-means uses the shared rule. Both were measured on one NVIDIA H100 80GB. Each seed’s speedup is the Flash-KMeans@25 time divided by the time at the first tested budget that reaches its held-out MSE.</p>
+          <p>The rule was selected using seed 10, which is also part of the evaluation. The 1M runs use ten seeds and the 10M runs use three. One e-means rerun on DEEP* 10M took 0.519 s here, compared with about 0.569 s implied by the paper. The SPACEV rows came from a second session, where a reference run was about 8% slower.</p>
           <a class="text-link" href="https://github.com/livingshade/p-means/tree/main/benchs/p_means">Protocol and raw runs <span aria-hidden="true">↗</span></a>
         </details>
       </div>
