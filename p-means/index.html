@@ -11,7 +11,7 @@
   <meta property="article:published_time" content="2026-11-15">
   <meta property="og:title" content="p-means: fewer probes, a recency-weighted finish">
   <meta property="og:description" content="2.76× over e-means across eight datasets, using one rule.">
-  <meta property="og:image" content="https://livingshade.github.io/p-means/media/h100-race.jpg?v=71ddf59">
+  <meta property="og:image" content="https://livingshade.github.io/p-means/media/h100-race.jpg?v=h100-results">
   <link rel="canonical" href="https://livingshade.github.io/p-means/">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -75,7 +75,7 @@
 
     <div class="article-intro prose">
       <p>p-means is a GPU k-means trainer for large <i>k</i>. It builds on <a href="https://owlgebra.ai/blog/o-means/">o-means</a> and uses a recency-weighted mean for the final centroids at every training budget. One rule covers all eight datasets from the <a href="https://arxiv.org/abs/2611.09501">e-means paper</a>.</p>
-      <p>On an NVIDIA H100, p-means reached the paper’s held-out error target on all eight datasets. The geometric mean speedup over e-means was <strong>2.76×</strong>. The project began as a parody of benchmark headlines. The <a href="#results">results</a> show all eight comparisons.</p>
+      <p>On an NVIDIA H100, p-means reached the paper’s held-out error target on all eight datasets. The geometric mean speedup over e-means was <strong>2.76×</strong>. The <a href="#results">results</a> show all eight comparisons.</p>
     </div>
 
     <section class="article-section prose" id="method" aria-labelledby="method-heading">
@@ -98,9 +98,9 @@
           <p>For each seed, the error target is the held-out MSE of Flash-KMeans after 25 iterations. On DINOv3 10M, p-means reached that target <strong>218.5×</strong> faster than Flash-KMeans.</p>
         </div>
         <figure class="race">
-          <video controls playsinline preload="none" poster="media/h100-race.jpg?v=71ddf59" aria-label="27-second H100 benchmark animation">
-            <source src="media/h100-race.mp4?v=71ddf59" type="video/mp4">
-            <a href="media/h100-race.mp4?v=71ddf59">Download the H100 benchmark animation.</a>
+          <video controls playsinline preload="none" poster="media/h100-race.jpg?v=h100-results" aria-label="H100 benchmark comparison">
+            <source src="media/h100-race.mp4?v=h100-results" type="video/mp4">
+            <a href="media/h100-race.mp4?v=h100-results">Download the H100 benchmark animation.</a>
           </video>
           <figcaption class="prose">DINOv3 10M at the same error target. The animation reconstructs the four clocks from the reported speedups.</figcaption>
         </figure>
